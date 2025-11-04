@@ -3,6 +3,42 @@
   "WorkspaceRootPath": "C:\\Users\\Lenovo\\Desktop\\klipper\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Application\\DTOs\\EmployeeScheduleDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\SalonManagement.Application\\DTOs\\EmployeeScheduleDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Application\\DTOs\\AppointmentDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\SalonManagement.Application\\DTOs\\AppointmentDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Application\\DTOs\\ServiceDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\SalonManagement.Application\\DTOs\\ServiceDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Application\\DTOs\\UserDto.cs||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\SalonManagement.Application\\DTOs\\UserDto.cs||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Application\\DTOs\\SalonDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\SalonManagement.Application\\DTOs\\SalonDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Application\\DTOs\\Auth\\LoginRequestDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\SalonManagement.Application\\DTOs\\Auth\\LoginRequestDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Exceptions\\DomainException.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\SalonManagement.Core\\Exceptions\\DomainException.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Interfaces\\IUnitOfWork.cs||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\SalonManagement.Core\\Interfaces\\IUnitOfWork.cs||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\common\\Result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\SalonManagement.Core\\common\\Result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Interfaces\\IServiceRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\SalonManagement.Core\\Interfaces\\IServiceRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -19,8 +55,8 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\SalonManagement.Core\\Interfaces\\ISalonRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Interfaces\\IAppointementRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\SalonManagement.Core\\Interfaces\\IAppointementRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Interfaces\\IAppointmentRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\SalonManagement.Core\\Interfaces\\IAppointmentRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Interfaces\\IRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -82,16 +118,133 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EmployeeScheduleDto.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Application\\DTOs\\EmployeeScheduleDto.cs",
+              "RelativeDocumentMoniker": "backend\\SalonManagement.Application\\DTOs\\EmployeeScheduleDto.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Application\\DTOs\\EmployeeScheduleDto.cs",
+              "RelativeToolTip": "backend\\SalonManagement.Application\\DTOs\\EmployeeScheduleDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T21:00:32.083Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AppointmentDto.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Application\\DTOs\\AppointmentDto.cs",
+              "RelativeDocumentMoniker": "backend\\SalonManagement.Application\\DTOs\\AppointmentDto.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Application\\DTOs\\AppointmentDto.cs",
+              "RelativeToolTip": "backend\\SalonManagement.Application\\DTOs\\AppointmentDto.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAADgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T20:57:38.105Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ServiceDto.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Application\\DTOs\\ServiceDto.cs",
+              "RelativeDocumentMoniker": "backend\\SalonManagement.Application\\DTOs\\ServiceDto.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Application\\DTOs\\ServiceDto.cs",
+              "RelativeToolTip": "backend\\SalonManagement.Application\\DTOs\\ServiceDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T20:55:27.863Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "IAppointementRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Interfaces\\IAppointementRepository.cs",
-              "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Interfaces\\IAppointementRepository.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Interfaces\\IAppointementRepository.cs",
-              "RelativeToolTip": "backend\\SalonManagement.Core\\Interfaces\\IAppointementRepository.cs",
+              "Title": "SalonDto.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Application\\DTOs\\SalonDto.cs",
+              "RelativeDocumentMoniker": "backend\\SalonManagement.Application\\DTOs\\SalonDto.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Application\\DTOs\\SalonDto.cs",
+              "RelativeToolTip": "backend\\SalonManagement.Application\\DTOs\\SalonDto.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAC0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T20:54:11.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserDto.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Application\\DTOs\\UserDto.cs",
+              "RelativeDocumentMoniker": "backend\\SalonManagement.Application\\DTOs\\UserDto.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Application\\DTOs\\UserDto.cs",
+              "RelativeToolTip": "backend\\SalonManagement.Application\\DTOs\\UserDto.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABkAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T20:50:05.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LoginRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Application\\DTOs\\Auth\\LoginRequestDto.cs",
+              "RelativeDocumentMoniker": "backend\\SalonManagement.Application\\DTOs\\Auth\\LoginRequestDto.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Application\\DTOs\\Auth\\LoginRequestDto.cs",
+              "RelativeToolTip": "backend\\SalonManagement.Application\\DTOs\\Auth\\LoginRequestDto.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T20:48:23.723Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DomainException.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Exceptions\\DomainException.cs",
+              "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Exceptions\\DomainException.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Exceptions\\DomainException.cs",
+              "RelativeToolTip": "backend\\SalonManagement.Core\\Exceptions\\DomainException.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T20:44:02.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Result.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\common\\Result.cs",
+              "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\common\\Result.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\common\\Result.cs",
+              "RelativeToolTip": "backend\\SalonManagement.Core\\common\\Result.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T20:41:55.106Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IUnitOfWork.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Interfaces\\IUnitOfWork.cs",
+              "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Interfaces\\IUnitOfWork.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Interfaces\\IUnitOfWork.cs",
+              "RelativeToolTip": "backend\\SalonManagement.Core\\Interfaces\\IUnitOfWork.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T20:37:51.615Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IAppointmentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Interfaces\\IAppointmentRepository.cs",
+              "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Interfaces\\IAppointmentRepository.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Interfaces\\IAppointmentRepository.cs",
+              "RelativeToolTip": "backend\\SalonManagement.Core\\Interfaces\\IAppointmentRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-04T20:33:57.298Z",
@@ -99,7 +252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 9,
               "Title": "IServiceRepository.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Interfaces\\IServiceRepository.cs",
               "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Interfaces\\IServiceRepository.cs",
@@ -112,7 +265,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 10,
               "Title": "ICustomerRepository.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Interfaces\\ICustomerRepository.cs",
               "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Interfaces\\ICustomerRepository.cs",
@@ -125,7 +278,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 11,
               "Title": "IEmployeeRepository.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Interfaces\\IEmployeeRepository.cs",
               "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Interfaces\\IEmployeeRepository.cs",
@@ -138,7 +291,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 12,
               "Title": "ISalonRepository.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Interfaces\\ISalonRepository.cs",
               "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Interfaces\\ISalonRepository.cs",
@@ -151,7 +304,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 14,
               "Title": "IRepository.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Interfaces\\IRepository.cs",
               "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Interfaces\\IRepository.cs",
@@ -164,7 +317,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 15,
               "Title": "AppointmentService.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Entities\\AppointmentService.cs",
               "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Entities\\AppointmentService.cs",
@@ -177,7 +330,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 16,
               "Title": "Appointment.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Entities\\Appointment.cs",
               "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Entities\\Appointment.cs",
@@ -190,7 +343,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 17,
               "Title": "EmployeeSchedule.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Entities\\EmployeeSchedule.cs",
               "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Entities\\EmployeeSchedule.cs",
@@ -203,7 +356,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 18,
               "Title": "SalonWorkingHours.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Entities\\SalonWorkingHours.cs",
               "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Entities\\SalonWorkingHours.cs",
@@ -216,7 +369,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 19,
               "Title": "EmployeeService.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Entities\\EmployeeService.cs",
               "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Entities\\EmployeeService.cs",
@@ -229,7 +382,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 20,
               "Title": "Service.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Entities\\Service.cs",
               "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Entities\\Service.cs",
@@ -242,7 +395,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 21,
               "Title": "Salon.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Entities\\Salon.cs",
               "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Entities\\Salon.cs",
@@ -255,7 +408,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 22,
               "Title": "SalonManager.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Entities\\SalonManager.cs",
               "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Entities\\SalonManager.cs",
@@ -268,7 +421,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 23,
               "Title": "Employee.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Entities\\Employee.cs",
               "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Entities\\Employee.cs",
@@ -281,7 +434,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 24,
               "Title": "Customer.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Entities\\Customer.cs",
               "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Entities\\Customer.cs",
@@ -294,7 +447,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 25,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Entities\\User.cs",
               "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Entities\\User.cs",
@@ -307,7 +460,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 26,
               "Title": "BaseEntity.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\klipper\\backend\\SalonManagement.Core\\Entities\\BaseEntity.cs",
               "RelativeDocumentMoniker": "backend\\SalonManagement.Core\\Entities\\BaseEntity.cs",
