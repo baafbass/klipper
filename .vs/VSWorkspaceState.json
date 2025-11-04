@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\backend"
+    "\\backend",
+    "\\backend\\SalonManagement.Core",
+    "\\backend\\SalonManagement.Core\\Entities"
   ],
-  "SelectedNode": "\\backend",
+  "SelectedNode": "\\backend\\SalonManagement.Core\\Entities\\BaseEntity.cs",
   "PreviewInSolutionExplorer": false
 }
