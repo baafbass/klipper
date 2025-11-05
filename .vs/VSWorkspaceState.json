@@ -2,9 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\backend",
-    "\\backend\\SalonManagement.Core",
-    "\\backend\\SalonManagement.Core\\Entities"
+    "\\backend\\SalonManagement.Application",
+    "\\backend\\SalonManagement.Application\\Interfaces"
   ],
-  "SelectedNode": "\\backend\\SalonManagement.Core\\Entities\\BaseEntity.cs",
+  "SelectedNode": "\\backend\\SalonManagement.Application\\Interfaces\\IEmployeeService.cs",
   "PreviewInSolutionExplorer": false
 }
