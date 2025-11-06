@@ -1,0 +1,4 @@
+C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.Core\obj\Debug\net9.0\SalonManagement.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.Core\obj\Debug\net9.0\SalonManagement.Core.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.Core\obj\Debug\net9.0\SalonManagement.Core.AssemblyInfo.cs
+C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.Core\obj\Debug\net9.0\SalonManagement.Core.csproj.CoreCompileInputs.cache

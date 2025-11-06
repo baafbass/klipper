@@ -2,9 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\backend",
+    "\\backend\\SalonManagement.API",
+    "\\backend\\SalonManagement.API\\Controllers",
     "\\backend\\SalonManagement.Application",
-    "\\backend\\SalonManagement.Application\\Interfaces"
+    "\\backend\\SalonManagement.Application\\Interfaces",
+    "\\backend\\SalonManagement.Application\\Services",
+    "\\backend\\SalonManagement.Infrastructure",
+    "\\backend\\SalonManagement.Infrastructure\\Data\\Configurations",
+    "\\backend\\SalonManagement.Infrastructure\\Services"
   ],
-  "SelectedNode": "\\backend\\SalonManagement.Application\\Interfaces\\IEmployeeService.cs",
+  "SelectedNode": "\\backend\\SalonManagement.API\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
