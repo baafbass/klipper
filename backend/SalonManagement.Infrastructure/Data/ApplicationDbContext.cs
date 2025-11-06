@@ -1,4 +1,4 @@
-
+﻿
 // SalonManagement.Infrastructure/Data/ApplicationDbContext.cs
 using Microsoft.EntityFrameworkCore;
 using SalonManagement.Core.Entities;
@@ -37,6 +37,23 @@ namespace SalonManagement.Infrastructure.Data
             modelBuilder.Entity<Salon>().HasQueryFilter(e => !e.IsDeleted);
             modelBuilder.Entity<Service>().HasQueryFilter(e => !e.IsDeleted);
             modelBuilder.Entity<Appointment>().HasQueryFilter(e => !e.IsDeleted);
+
+            // ---- Prevent multiple cascade paths for AppointmentServices ----
+            modelBuilder.Entity<AppointmentService>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+
+                entity.HasOne(e => e.Appointment)
+                      .WithMany(a => a.AppointmentServices)
+                      .HasForeignKey(e => e.AppointmentId)
+                      .OnDelete(DeleteBehavior.Cascade); // Appointment -> AppointmentServices cascade (ok)
+
+                entity.HasOne(e => e.Service)
+                      .WithMany(s => s.AppointmentServices)
+                      .HasForeignKey(e => e.ServiceId)
+                      // Burada CASCADE yerine RESTRICT/NO ACTION kullanıyoruz:
+                      .OnDelete(DeleteBehavior.Restrict); // veya DeleteBehavior.NoAction
+            });
         }
     }
 }

@@ -54,7 +54,7 @@ builder.Services.AddCors(options =>
 });
 
 // Dependency Injection
-//builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 //builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 //builder.Services.AddScoped<IAuthService, AuthService>();
 //builder.Services.AddScoped<ISalonService, SalonService>();

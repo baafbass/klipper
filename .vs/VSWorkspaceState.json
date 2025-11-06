@@ -1,16 +1,17 @@
 {
   "ExpandedNodes": [
     "",
-    "\\backend",
-    "\\backend\\SalonManagement.Application",
-    "\\backend\\SalonManagement.Application\\Interfaces",
-    "\\backend\\SalonManagement.Application\\Services",
     "\\backend\\SalonManagement.Core",
-    "\\backend\\SalonManagement.Core\\Entities",
+    "\\backend\\SalonManagement.Core\\common",
     "\\backend\\SalonManagement.Infrastructure",
-    "\\backend\\SalonManagement.Infrastructure\\Services",
-    "\\backend\\SalonManagement.Tests"
+    "\\backend\\SalonManagement.Infrastructure\\Repositories",
+    "\\frontend",
+    "\\frontend\\salon-managemnt-ui",
+    "\\frontend\\salon-managemnt-ui\\src",
+    "\\frontend\\salon-managemnt-ui\\src\\api",
+    "\\frontend\\salon-managemnt-ui\\src\\store",
+    "\\frontend\\salon-managemnt-ui\\src\\types"
   ],
-  "SelectedNode": "\\backend\\SalonManagement.Core\\SalonManagement.Core.csproj",
+  "SelectedNode": "\\frontend\\salon-managemnt-ui\\src\\store\\authStore.ts",
   "PreviewInSolutionExplorer": false
 }

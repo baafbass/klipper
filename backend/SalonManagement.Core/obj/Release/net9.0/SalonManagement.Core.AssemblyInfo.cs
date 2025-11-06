@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SalonManagement.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2aac5758f38cfce856eda93b4c3335a7a97d2ce4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b44c4294dc46829937db2445c9983a3648c9d41c")]
 [assembly: System.Reflection.AssemblyProductAttribute("SalonManagement.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SalonManagement.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
