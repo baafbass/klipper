@@ -1,3 +1,10 @@
+using SalonManagement.Application.DTOs;
+using SalonManagement.Application.DTOs.Auth;
+using SalonManagement.Core.Common;
+using SalonManagement.Core.Entities;
+using System.Threading;
+using System.Threading.Tasks;
+
 // SalonManagement.Application/Interfaces/IAuthService.cs
 namespace SalonManagement.Application.Interfaces
 {

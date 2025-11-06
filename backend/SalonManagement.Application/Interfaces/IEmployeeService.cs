@@ -1,4 +1,8 @@
-// SalonManagement.Application/Interfaces/IEmployeeService.cs
+using SalonManagement.Application.DTOs;
+using SalonManagement.Core.Common;
+using System.Threading;
+using System.Threading.Tasks;
+
 namespace SalonManagement.Application.Interfaces
 {
     public interface IEmployeeService

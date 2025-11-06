@@ -1,3 +1,8 @@
+using SalonManagement.Core.Entities;
+using System.Threading;
+using System.Threading.Tasks;
+
+
 // SalonManagement.Core/Interfaces/IAppointmentRepository.cs
 namespace SalonManagement.Core.Interfaces
 {

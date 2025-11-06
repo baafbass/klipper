@@ -1,3 +1,7 @@
+using SalonManagement.Core.Entities;
+using System.Threading;
+using System.Threading.Tasks;
+
 // SalonManagement.Core/Interfaces/IUnitOfWork.cs
 namespace SalonManagement.Core.Interfaces
 {

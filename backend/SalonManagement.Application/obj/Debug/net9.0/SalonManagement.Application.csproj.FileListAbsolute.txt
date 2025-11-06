@@ -3,3 +3,14 @@ C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.Application\obj\Debug\ne
 C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.Application\obj\Debug\net9.0\SalonManagement.Application.AssemblyInfoInputs.cache
 C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.Application\obj\Debug\net9.0\SalonManagement.Application.AssemblyInfo.cs
 C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.Application\obj\Debug\net9.0\SalonManagement.Application.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.Application\obj\Debug\net9.0\SalonManagement.Application.sourcelink.json
+C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.Application\bin\Debug\net9.0\SalonManagement.Application.deps.json
+C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.Application\bin\Debug\net9.0\SalonManagement.Application.dll
+C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.Application\bin\Debug\net9.0\SalonManagement.Application.pdb
+C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.Application\bin\Debug\net9.0\SalonManagement.Core.dll
+C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.Application\bin\Debug\net9.0\SalonManagement.Core.pdb
+C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.Application\obj\Debug\net9.0\SalonMan.14BC3314.Up2Date
+C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.Application\obj\Debug\net9.0\SalonManagement.Application.dll
+C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.Application\obj\Debug\net9.0\refint\SalonManagement.Application.dll
+C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.Application\obj\Debug\net9.0\SalonManagement.Application.pdb
+C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.Application\obj\Debug\net9.0\ref\SalonManagement.Application.dll

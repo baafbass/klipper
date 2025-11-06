@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\backend",
-    "\\backend\\SalonManagement.API",
-    "\\backend\\SalonManagement.API\\Controllers",
     "\\backend\\SalonManagement.Application",
     "\\backend\\SalonManagement.Application\\Interfaces",
     "\\backend\\SalonManagement.Application\\Services",
+    "\\backend\\SalonManagement.Core",
+    "\\backend\\SalonManagement.Core\\Entities",
     "\\backend\\SalonManagement.Infrastructure",
-    "\\backend\\SalonManagement.Infrastructure\\Data\\Configurations",
-    "\\backend\\SalonManagement.Infrastructure\\Services"
+    "\\backend\\SalonManagement.Infrastructure\\Services",
+    "\\backend\\SalonManagement.Tests"
   ],
-  "SelectedNode": "\\backend\\SalonManagement.API\\Program.cs",
+  "SelectedNode": "\\backend\\SalonManagement.Core\\SalonManagement.Core.csproj",
   "PreviewInSolutionExplorer": false
 }

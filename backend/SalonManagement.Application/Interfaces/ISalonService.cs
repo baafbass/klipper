@@ -1,3 +1,8 @@
+using SalonManagement.Application.DTOs;
+using SalonManagement.Core.Common;
+using System.Threading;
+using System.Threading.Tasks;
+
 // SalonManagement.Application/Interfaces/ISalonService.cs
 namespace SalonManagement.Application.Interfaces
 {

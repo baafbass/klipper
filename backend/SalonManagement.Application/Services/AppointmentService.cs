@@ -171,5 +171,45 @@ namespace SalonManagement.Application.Services
         }
 
         // Implement other methods...
+
+        public async Task<Result<AppointmentDto>> GetAppointmentByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                // Try to retrieve with details (services, customer, employee, salon) if repository supports it.
+                Appointment appointment = null;
+
+                // Prefer a detailed fetch if available on repository
+                if (_unitOfWork.Appointments is object)
+                {
+                    // Common repository method name convention: GetByIdWithDetailsAsync
+                    // If you don't have this method, replace with GetByIdAsync.
+                    try
+                    {
+                        appointment = await _unitOfWork.Appointments.GetAppointmentWithDetailsAsync(id, cancellationToken);
+                    }
+                    catch
+                    {
+                        // fallback to basic GetByIdAsync if specialized method not present
+                        appointment = await _unitOfWork.Appointments.GetByIdAsync(id, cancellationToken);
+                    }
+                }
+                else
+                {
+                    return Result.Failure<AppointmentDto>("Appointment repository not available");
+                }
+
+                if (appointment == null)
+                    return Result.Failure<AppointmentDto>("Appointment not found");
+
+                var dto = _mapper.Map<AppointmentDto>(appointment);
+                return Result.Success(dto);
+            }
+            catch (Exception ex)
+            {
+                return Result.Failure<AppointmentDto>($"Error retrieving appointment: {ex.Message}");
+            }
+        }
+
     }
 }
