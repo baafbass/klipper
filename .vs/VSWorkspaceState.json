@@ -2,16 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\backend",
-    "\\backend\\SalonManagement.Application",
-    "\\backend\\SalonManagement.Application\\DTOs",
-    "\\backend\\SalonManagement.Application\\DTOs\\Auth",
-    "\\backend\\SalonManagement.Application\\Services",
+    "\\backend\\SalonManagement.API",
     "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\components",
     "\\frontend\\src\\components\\salon",
     "\\frontend\\src\\pages"
   ],
-  "SelectedNode": "\\frontend\\tsconfig.json",
   "PreviewInSolutionExplorer": false
 }

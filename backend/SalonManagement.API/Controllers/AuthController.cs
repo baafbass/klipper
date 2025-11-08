@@ -1,8 +1,8 @@
 // SalonManagement.API/Controllers/AuthController.cs
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SalonManagement.Application.DTOs.Auth;
-using SalonManagement.Application.Interfaces;
+using SalonManagement.API.DTOs.Auth;
+using SalonManagement.API.Repositories.Interfaces;
 
 namespace SalonManagement.API.Controllers
 {
@@ -37,6 +37,7 @@ namespace SalonManagement.API.Controllers
         {
             var userId = Guid.Parse(User.FindFirst("userId")?.Value ?? string.Empty);
             var result = await _authService.GetCurrentUserAsync(userId);
+            
             return HandleResult(result);
         }
     }

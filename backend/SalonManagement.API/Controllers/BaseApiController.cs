@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using SalonManagement.Core.Common;
+using SalonManagement.API.Domain.Common;
 
 namespace SalonManagement.API.Controllers
 {

@@ -2,12 +2,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using SalonManagement.Infrastructure.Data;
-using SalonManagement.Core.Interfaces;
-using SalonManagement.Infrastructure.Repositories;
-using SalonManagement.Application.Interfaces;
-using SalonManagement.Application.Services;
+using SalonManagement.API.Data;
+using SalonManagement.API.Domain.Interfaces;
+using SalonManagement.API.Repositories.Implementations;
+using SalonManagement.API.Repositories.Interfaces;
+using SalonManagement.API.Services;
 using SalonManagement.API.Configuration;
+using SalonManagement.API.Services.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,24 +21,31 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        b => b.MigrationsAssembly("SalonManagement.Infrastructure")));
+        b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
-// JWT Configuration
-var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
+// JWT Configuration - bind safely and register the POCO for injection
+var jwtSection = builder.Configuration.GetSection("JwtSettings");
+var jwtSettings = jwtSection.Get<JwtSettings>() ?? new JwtSettings();
 builder.Services.AddSingleton(jwtSettings);
 
+// Authentication (JWT)
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
+        // if Secret is empty, token validation will fail - but this prevents NRE
+        var key = string.IsNullOrEmpty(jwtSettings.Secret)
+            ? null
+            : new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret));
+
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateIssuer = true,
-            ValidateAudience = true,
+            ValidateIssuer = !string.IsNullOrEmpty(jwtSettings.Issuer),
+            ValidateAudience = !string.IsNullOrEmpty(jwtSettings.Audience),
             ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
+            ValidateIssuerSigningKey = key != null,
             ValidIssuer = jwtSettings.Issuer,
             ValidAudience = jwtSettings.Audience,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret))
+            IssuerSigningKey = key
         };
     });
 
@@ -55,8 +63,8 @@ builder.Services.AddCors(options =>
 
 // Dependency Injection
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-//builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
-//builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 //builder.Services.AddScoped<ISalonService, SalonService>();
 //builder.Services.AddScoped<IServiceService, ServiceService>();
 //builder.Services.AddScoped<IEmployeeService, EmployeeService>();
