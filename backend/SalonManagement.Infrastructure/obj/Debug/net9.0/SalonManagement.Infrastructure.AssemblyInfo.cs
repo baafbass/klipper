@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SalonManagement.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b44c4294dc46829937db2445c9983a3648c9d41c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2ab205c20c8dc5b7248da45cd59b8df2a3e1b82a")]
 [assembly: System.Reflection.AssemblyProductAttribute("SalonManagement.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SalonManagement.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

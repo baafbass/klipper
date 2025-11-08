@@ -1,11 +1,34 @@
+export type Role = 'Customer' | 'Employee' | 'SalonManager' | 'SystemAdmin';
+
 export interface User {
     id: string;
     email: string;
     firstName: string;
     lastName: string;
-    phoneNumber: string;
-    role: 'Customer' | 'Employee' | 'SalonManager' | 'SystemAdmin';
-    isActive: boolean;
+    phoneNumber?: string;
+    role: Role;
+    isActive?: boolean;
+}
+
+export interface LoginRequest {
+    email: string;
+    password: string;
+}
+
+
+export interface LoginResponse {
+    token: string;
+    refreshToken?: string;
+    user: User;
+}
+
+export interface RegisterRequest {
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+    phoneNumber?: string;
+    dateOfBirth?: string; // ISO string
 }
 
 export interface Salon {
