@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SalonManagement.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+35b5ab0cc319c4dc1c91b1105c51ce1fd5781922")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f8ab1c8c0632e1cf31c76b9bc2a63515590ff97b")]
 [assembly: System.Reflection.AssemblyProductAttribute("SalonManagement.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SalonManagement.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
