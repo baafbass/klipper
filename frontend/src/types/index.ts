@@ -43,6 +43,24 @@ export interface Salon {
     workingHours: WorkingHours[];
 }
 
+export interface CreateSalonRequest {
+name: string;
+description: string;
+address: string;
+city: string;
+phoneNumber: string;
+email: string;
+}
+
+
+export interface SalonManagerRequest {
+email: string;
+password: string;
+firstName: string;
+lastName: string;
+phoneNumber: string;
+}
+
 export interface Service {
     id: string;
     salonId: string;

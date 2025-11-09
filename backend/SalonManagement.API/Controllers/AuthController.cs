@@ -31,6 +31,22 @@ namespace SalonManagement.API.Controllers
             return HandleResult(result);
         }
 
+        [HttpPost("login-sysadmin")]
+        [AllowAnonymous]
+        public async Task<IActionResult> LoginSysAdmin([FromBody] LoginRequestDto request)
+        {
+            var result = await _authService.LoginSystemAdminAsync(request);
+            return HandleResult(result);
+        }
+
+        [HttpPost("register-sysadmin")]
+        [AllowAnonymous]
+        public async Task<IActionResult> RegisterSysAdmin([FromBody] RegisterRequestDto request)
+        {
+            var result = await _authService.RegisterSystemAdminAsync(request);
+            return HandleResult(result);
+        }
+
         [HttpGet("me")]
         [Authorize]
         public async Task<IActionResult> GetCurrentUser()

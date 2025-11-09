@@ -21,6 +21,9 @@ namespace SalonManagement.API.Mapping
             CreateMap<SalonManager, UserDto>()
                 .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role.ToString()));
 
+            CreateMap<SystemAdmin, UserDto>()
+                .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role.ToString()));
+
             CreateMap<Customer, CustomerDto>()
                 .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role.ToString()));
 
@@ -31,6 +34,9 @@ namespace SalonManagement.API.Mapping
                     src.EmployeeServices
                         .Where(es => es.IsActive)
                         .Select(es => es.Service)));
+
+            CreateMap<SystemAdmin, SystemAdminDto>()
+               .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role.ToString()));
 
             // Salon Mappings
             CreateMap<Salon, SalonDto>()

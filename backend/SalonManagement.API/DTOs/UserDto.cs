@@ -1,4 +1,4 @@
-// SalonManagement.Application/DTOs/UserDto.cs
+// SalonManagement.API/DTOs/UserDto.cs
 namespace SalonManagement.API.DTOs
 {
     public class UserDto
@@ -24,5 +24,9 @@ namespace SalonManagement.API.DTOs
     {
         public DateTime? DateOfBirth { get; set; }
         public string Notes { get; set; }
+    }
+
+    public class SystemAdminDto : UserDto {
+        public DateTime CreatedAt { get; private set; }
     }
 }

@@ -3,14 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/authStore';
 
 
-export default function Header() {
+export default function AdminHeader() {
     const { isAuthenticated, user, logout } = useAuthStore();
     const navigate = useNavigate();
 
 
     const handleLogout = () => {
         logout();
-        navigate('/login');
+        navigate('/login-sysadmin');
     };
 
 
@@ -21,14 +21,6 @@ export default function Header() {
 
 
                 <nav className="space-x-4">
-                    {!isAuthenticated && (
-                        <>
-                            <Link to="/login" className="hover:underline">Login</Link>
-                            <Link to="/register" className="hover:underline">Register</Link>
-                        </>
-                    )}
-
-
                     {isAuthenticated && (
                         <>
                             <span className="mr-2">{user?.firstName}</span>

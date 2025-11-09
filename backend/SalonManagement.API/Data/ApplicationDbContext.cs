@@ -15,6 +15,7 @@ namespace SalonManagement.API.Data
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<SalonManager> SalonManagers { get; set; }
+        public DbSet<SystemAdmin> SystemAdmins { get; set; }
         public DbSet<Salon> Salons { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
@@ -34,6 +35,7 @@ namespace SalonManagement.API.Data
             modelBuilder.Entity<Customer>().HasQueryFilter(e => !e.IsDeleted);
             modelBuilder.Entity<Employee>().HasQueryFilter(e => !e.IsDeleted);
             modelBuilder.Entity<SalonManager>().HasQueryFilter(e => !e.IsDeleted);
+            modelBuilder.Entity<SystemAdmin>().HasQueryFilter(e => !e.IsDeleted);
             modelBuilder.Entity<Salon>().HasQueryFilter(e => !e.IsDeleted);
             modelBuilder.Entity<Service>().HasQueryFilter(e => !e.IsDeleted);
             modelBuilder.Entity<Appointment>().HasQueryFilter(e => !e.IsDeleted);

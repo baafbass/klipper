@@ -53,6 +53,65 @@ namespace SalonManagement.API.Services
             return Result.Success(dto);
         }
 
+        public async Task<Result<LoginResponseDto>> LoginSystemAdminAsync(LoginRequestDto request, CancellationToken cancellationToken = default)
+        {
+            var user = await _context.SystemAdmins
+                .SingleOrDefaultAsync(u => u.Email == request.Email, cancellationToken);
+
+            if (user == null) return Result.Failure<LoginResponseDto>("Invalid credentials");
+
+            var passwordMatches = BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash);
+            if (!passwordMatches) return Result.Failure<LoginResponseDto>("Invalid credentials");
+
+            var tokenResult = await GenerateTokenAsync(user, cancellationToken);
+            if (!tokenResult.IsSuccess)
+                return Result.Failure<LoginResponseDto>(tokenResult.Error ?? "Token generation failed");
+
+            var dto = new LoginResponseDto
+            {
+                Token = tokenResult.Value,
+                RefreshToken = null,
+                User = _mapper.Map<UserDto>(user)
+            };
+
+            return Result.Success(dto);
+        }
+
+        public async Task<Result<LoginResponseDto>> RegisterSystemAdminAsync(RegisterRequestDto request, CancellationToken cancellationToken = default)
+        {
+            // check existing email
+            var exists = await _context.SystemAdmins.AnyAsync(u => u.Email == request.Email, cancellationToken);
+            if (exists) return Result.Failure<LoginResponseDto>("Email already in use");
+
+            // Use the public parameterized constructor (no object initializer)
+            var systemAdmin = new SystemAdmin(
+                request.Email,
+                request.FirstName,
+                request.LastName,
+                request.PhoneNumber
+            );
+
+            // Set password via the provided method (encapsulated)
+            var hashed = BCrypt.Net.BCrypt.HashPassword(request.Password ?? string.Empty);
+            systemAdmin.SetPassword(hashed);
+
+            // Add and save
+            _context.SystemAdmins.Add(systemAdmin);
+            await _context.SaveChangesAsync(cancellationToken);
+
+            var tokenResult = await GenerateTokenAsync(systemAdmin, cancellationToken);
+            if (!tokenResult.IsSuccess) return Result.Failure<LoginResponseDto>(tokenResult.Error ?? "Token generation failed");
+
+            var dto = new LoginResponseDto
+            {
+                Token = tokenResult.Value,
+                RefreshToken = null,
+                User = _mapper.Map<UserDto>(systemAdmin)
+            };
+
+            return Result.Success(dto);
+        }
+
         public async Task<Result<LoginResponseDto>> RegisterCustomerAsync(RegisterRequestDto request, CancellationToken cancellationToken = default)
         {
             // check existing email
