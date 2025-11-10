@@ -91,6 +91,7 @@ namespace SalonManagement.API.Mapping
                     src.DayOfWeek,
                     src.StartTime,
                     src.EndTime));
+
         }
     }
 }

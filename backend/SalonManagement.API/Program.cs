@@ -76,6 +76,10 @@ builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 // AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));
 
+// Salon manager service & http context accessor
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ISalonManagerService, SalonManagerService>();
+
 var app = builder.Build();
 
 // Middleware

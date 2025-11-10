@@ -1,4 +1,4 @@
-// SalonManagement.Core/Entities/SalonWorkingHours.cs
+// SalonManagement.API/Domain/Entities/SalonWorkingHours.cs
 namespace SalonManagement.API.Domain.Entities
 {
     /// <summary>
