@@ -9,6 +9,7 @@ using SalonManagement.API.Repositories.Interfaces;
 using SalonManagement.API.Services;
 using SalonManagement.API.Configuration;
 using SalonManagement.API.Services.Infrastructure;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,7 +46,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuerSigningKey = key != null,
             ValidIssuer = jwtSettings.Issuer,
             ValidAudience = jwtSettings.Audience,
-            IssuerSigningKey = key
+            IssuerSigningKey = key,
+            // IMPORTANT: tell the validator where to pick up role claims
+            RoleClaimType = ClaimTypes.Role // or "role" if you only emit plain "role"
         };
     });
 
@@ -65,7 +68,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IAuthService, AuthService>();
-//builder.Services.AddScoped<ISalonService, SalonService>();
+builder.Services.AddScoped<ISalonService, SalonService>();
 //builder.Services.AddScoped<IServiceService, ServiceService>();
 //builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();

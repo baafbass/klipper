@@ -53,6 +53,30 @@ namespace SalonManagement.API.Services
             return Result.Success(dto);
         }
 
+        public async Task<Result<LoginResponseDto>> LoginSalonManagerAsync(LoginRequestDto request, CancellationToken cancellationToken = default)
+        {
+            var user = await _context.SalonManagers
+                .SingleOrDefaultAsync(u => u.Email == request.Email, cancellationToken);
+
+            if (user == null) return Result.Failure<LoginResponseDto>("Invalid credentials");
+
+            var passwordMatches = BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash);
+            if (!passwordMatches) return Result.Failure<LoginResponseDto>("Invalid credentials");
+
+            var tokenResult = await GenerateTokenAsync(user, cancellationToken);
+            if (!tokenResult.IsSuccess)
+                return Result.Failure<LoginResponseDto>(tokenResult.Error ?? "Token generation failed");
+
+            var dto = new LoginResponseDto
+            {
+                Token = tokenResult.Value,
+                RefreshToken = null,
+                User = _mapper.Map<UserDto>(user)
+            };
+
+            return Result.Success(dto);
+        }
+
         public async Task<Result<LoginResponseDto>> LoginSystemAdminAsync(LoginRequestDto request, CancellationToken cancellationToken = default)
         {
             var user = await _context.SystemAdmins
@@ -166,9 +190,14 @@ namespace SalonManagement.API.Services
                 {
                     new Claim(JwtRegisteredClaimNames.Sub, user.Email ?? string.Empty),
                     new Claim("userId", user.Id.ToString()),
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Name, user.GetFullName() ?? string.Empty),
                     new Claim("firstName", user.FirstName ?? string.Empty),
                     new Claim("lastName", user.LastName ?? string.Empty),
-                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                   // Role claims — include both ClaimTypes.Role and plain "role"
+                    new Claim(ClaimTypes.Role, user.Role.ToString()), // mapped to http://schemas.microsoft...
+                    new Claim("role", user.Role.ToString())            // plain role claim, helpful for some clients
                 };
 
                 var token = new JwtSecurityToken(

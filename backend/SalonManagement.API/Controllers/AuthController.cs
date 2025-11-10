@@ -31,6 +31,15 @@ namespace SalonManagement.API.Controllers
             return HandleResult(result);
         }
 
+        [HttpPost("login-salonmanager")]
+        [AllowAnonymous]
+        public async Task<IActionResult> LoginSalonManager([FromBody] LoginRequestDto request)
+        {
+            var result = await _authService.LoginSalonManagerAsync(request);
+            return HandleResult(result);
+        }
+
+
         [HttpPost("login-sysadmin")]
         [AllowAnonymous]
         public async Task<IActionResult> LoginSysAdmin([FromBody] LoginRequestDto request)

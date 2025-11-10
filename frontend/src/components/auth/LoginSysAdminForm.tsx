@@ -24,6 +24,8 @@ export default function LoginSysAdminForm() {
         try {
             const res = await authApi.loginSysAdmin(form);
             const { token, user } = res.data;
+            console.log('user',user);
+            console.log('token',token);
             loginStore.login(user, token);
             navigate('/admin/dashboard');
         } catch (err: any) {

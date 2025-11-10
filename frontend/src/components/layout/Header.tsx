@@ -21,6 +21,7 @@ export default function Header() {
 
 
                 <nav className="space-x-4">
+                    <Link to="/salon-manager-login" className="hover:underline">Salon Manager</Link>
                     {!isAuthenticated && (
                         <>
                             <Link to="/login" className="hover:underline">Login</Link>

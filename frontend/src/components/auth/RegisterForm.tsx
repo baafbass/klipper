@@ -34,7 +34,7 @@ export default function RegisterForm() {
 
     return (
         <form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 bg-white rounded shadow">
-            <h2 className="text-2xl mb-4">Register</h2>
+            <h2 className="text-2xl mb-4">Register - Customer</h2>
 
 
             {error && <div className="mb-3 text-red-600">{error}</div>}

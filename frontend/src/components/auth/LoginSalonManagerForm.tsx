@@ -5,7 +5,7 @@ import { useAuthStore } from '../../store/authStore';
 import { useNavigate } from 'react-router-dom';
 
 
-export default function LoginForm() {
+export default function LoginSalonManagerForm() {
     const [form, setForm] = useState<LoginRequest>({ email: '', password: '' });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -22,10 +22,12 @@ export default function LoginForm() {
         setLoading(true);
         setError(null);
         try {
-            const res = await authApi.login(form);
+            const res = await authApi.loginSalonManager(form);
             const { token, user } = res.data;
+            console.log('user',user);
+            console.log('token',token);
             loginStore.login(user, token);
-            navigate('/');
+            navigate('/salon-manager/dashboard');
         } catch (err: any) {
             setError(err?.response?.data?.message || 'Login failed');
         } finally {
@@ -36,7 +38,7 @@ export default function LoginForm() {
 
     return (
         <form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 bg-white rounded shadow">
-            <h2 className="text-2xl mb-4">Login - Customer</h2>
+            <h2 className="text-2xl mb-4">Login - Salon Manager</h2>
 
 
             {error && <div className="mb-3 text-red-600">{error}</div>}

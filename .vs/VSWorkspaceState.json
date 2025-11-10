@@ -3,11 +3,16 @@
     "",
     "\\backend",
     "\\backend\\SalonManagement.API",
+    "\\backend\\SalonManagement.API\\Configuration",
+    "\\backend\\SalonManagement.API\\Domain",
+    "\\backend\\SalonManagement.API\\Domain\\common",
+    "\\backend\\SalonManagement.API\\DTOs",
+    "\\backend\\SalonManagement.API\\Mapping",
     "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\components",
-    "\\frontend\\src\\components\\salon",
-    "\\frontend\\src\\pages"
+    "\\frontend\\src\\components\\auth"
   ],
+  "SelectedNode": "\\backend\\SalonManagement.API\\Controllers\\AuthController.cs",
   "PreviewInSolutionExplorer": false
 }

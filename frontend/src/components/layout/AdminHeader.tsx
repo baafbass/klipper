@@ -10,7 +10,7 @@ export default function AdminHeader() {
 
     const handleLogout = () => {
         logout();
-        navigate('/login-sysadmin');
+        navigate('/admin/login');
     };
 
 
