@@ -24,8 +24,6 @@ export default function LoginSalonManagerForm() {
         try {
             const res = await authApi.loginSalonManager(form);
             const { token, user } = res.data;
-            console.log('user',user);
-            console.log('token',token);
             loginStore.login(user, token);
             navigate('/salon-manager/dashboard');
         } catch (err: any) {

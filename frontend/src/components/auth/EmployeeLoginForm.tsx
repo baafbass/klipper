@@ -5,7 +5,7 @@ import { useAuthStore } from '../../store/authStore';
 import { useNavigate } from 'react-router-dom';
 
 
-export default function LoginSysAdminForm() {
+export default function EmployeeLoginForm() {
     const [form, setForm] = useState<LoginRequest>({ email: '', password: '' });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -22,10 +22,10 @@ export default function LoginSysAdminForm() {
         setLoading(true);
         setError(null);
         try {
-            const res = await authApi.loginSysAdmin(form);
+            const res = await authApi.loginEmployee(form);
             const { token, user } = res.data;
             loginStore.login(user, token);
-            navigate('/admin/dashboard');
+            navigate('/employee/dashboard');
         } catch (err: any) {
             setError(err?.response?.data?.message || 'Login failed');
         } finally {
@@ -36,7 +36,7 @@ export default function LoginSysAdminForm() {
 
     return (
         <form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 bg-white rounded shadow">
-            <h2 className="text-2xl mb-4">Login - System Admin</h2>
+            <h2 className="text-2xl mb-4">Login - Employee</h2>
 
 
             {error && <div className="mb-3 text-red-600">{error}</div>}

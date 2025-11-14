@@ -9,9 +9,12 @@ import SystemAdminAddManagerPage from './pages/SystemAdminAddManagerPage';
 import SystemAdminLoginPage from './pages/SystemAdminLoginPage';
 import SalonManagerLoginPage from './pages/SalonManagerLoginPage';
 import SalonManagerDashboard from './pages/SalonManagerDashboard';
+import EmployeeLoginPage from './pages/EmployeeLoginPage';
+import EmployeeDashboard from './pages/EmployeeDashboard';
 
 import { useAuthStore } from './store/authStore';
 import { JSX } from 'react/jsx-runtime';
+
 
 
 function PrivateRoute({ children }: { children: JSX.Element }) {
@@ -27,8 +30,11 @@ export default function App() {
                 <Route path="/" element={<PrivateRoute><HomePage /></PrivateRoute>} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
-                 
+     
                 <Route path="/salon-manager-login" element={<SalonManagerLoginPage/>}/>
+                <Route path="/employee-login" element={<EmployeeLoginPage/>}/>
+                <Route path="/employee/dashboard" element={<EmployeeDashboard/>}/>
+
                 <Route path="/salon-manager/dashboard" element={<SalonManagerDashboard/>}/>
                 <Route path="/admin/login" element={<SystemAdminLoginPage />} />
                 <Route path="/admin/dashboard" element={<PrivateRoute><SystemAdminDashboard /></PrivateRoute>} />

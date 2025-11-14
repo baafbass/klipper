@@ -8,6 +8,9 @@ using SalonManagement.API.DTOs.Manager;
 using SalonManagement.API.Repositories.Interfaces;
 using System.Security.Claims;
 using ManagerDtos = SalonManagement.API.DTOs.Manager; // <-- alias
+// add this near the other using directives
+using EmployeeServiceEntity = SalonManagement.API.Domain.Entities.EmployeeService;
+
 
 namespace SalonManagement.API.Services
 {
@@ -331,7 +334,7 @@ namespace SalonManagement.API.Services
             var exists = await _context.EmployeeServices.AnyAsync(es => es.EmployeeId == dto.EmployeeId && es.ServiceId == dto.ServiceId, cancellationToken);
             if (exists) return Result.Failure("Employee already assigned this service.");
 
-            var link = new EmployeeService(dto.EmployeeId, dto.ServiceId);
+            var link = new EmployeeServiceEntity(dto.EmployeeId, dto.ServiceId);
             await _context.EmployeeServices.AddAsync(link, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
 

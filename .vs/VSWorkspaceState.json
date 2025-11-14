@@ -3,16 +3,14 @@
     "",
     "\\backend",
     "\\backend\\SalonManagement.API",
-    "\\backend\\SalonManagement.API\\Configuration",
-    "\\backend\\SalonManagement.API\\Domain",
-    "\\backend\\SalonManagement.API\\Domain\\common",
+    "\\backend\\SalonManagement.API\\Configurations",
     "\\backend\\SalonManagement.API\\DTOs",
-    "\\backend\\SalonManagement.API\\Mapping",
-    "\\frontend",
-    "\\frontend\\src",
-    "\\frontend\\src\\components",
-    "\\frontend\\src\\components\\auth"
+    "\\backend\\SalonManagement.API\\DTOs\\Auth",
+    "\\backend\\SalonManagement.API\\DTOs\\Manager",
+    "\\backend\\SalonManagement.API\\Repositories",
+    "\\backend\\SalonManagement.API\\Repositories\\Implementations",
+    "\\backend\\SalonManagement.API\\Repositories\\Interfaces"
   ],
-  "SelectedNode": "\\backend\\SalonManagement.API\\Controllers\\AuthController.cs",
+  "SelectedNode": "\\backend\\SalonManagement.API\\Services\\EmployeeService.cs",
   "PreviewInSolutionExplorer": false
 }

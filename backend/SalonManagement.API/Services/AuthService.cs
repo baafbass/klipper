@@ -77,6 +77,30 @@ namespace SalonManagement.API.Services
             return Result.Success(dto);
         }
 
+        public async Task<Result<LoginResponseDto>> LoginEmployeeAsync(LoginRequestDto request, CancellationToken cancellationToken = default)
+        {
+            var user = await _context.Employees
+                .SingleOrDefaultAsync(u => u.Email == request.Email, cancellationToken);
+
+            if (user == null) return Result.Failure<LoginResponseDto>("Invalid credentials");
+
+            var passwordMatches = BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash);
+            if (!passwordMatches) return Result.Failure<LoginResponseDto>("Invalid credentials");
+
+            var tokenResult = await GenerateTokenAsync(user, cancellationToken);
+            if (!tokenResult.IsSuccess)
+                return Result.Failure<LoginResponseDto>(tokenResult.Error ?? "Token generation failed");
+
+            var dto = new LoginResponseDto
+            {
+                Token = tokenResult.Value,
+                RefreshToken = null,
+                User = _mapper.Map<UserDto>(user)
+            };
+
+            return Result.Success(dto);
+        }
+
         public async Task<Result<LoginResponseDto>> LoginSystemAdminAsync(LoginRequestDto request, CancellationToken cancellationToken = default)
         {
             var user = await _context.SystemAdmins

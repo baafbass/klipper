@@ -39,6 +39,14 @@ namespace SalonManagement.API.Controllers
             return HandleResult(result);
         }
 
+        [HttpPost("login-employee")]
+        [AllowAnonymous]
+        public async Task<IActionResult> LoginEmpoyee([FromBody] LoginRequestDto request)
+        {
+            var result = await _authService.LoginEmployeeAsync(request);
+            return HandleResult(result);
+        }
+
 
         [HttpPost("login-sysadmin")]
         [AllowAnonymous]
