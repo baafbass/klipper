@@ -64,23 +64,22 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Dependency Injection
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
-builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<ISalonService, SalonService>();
-//builder.Services.AddScoped<IServiceService, ServiceService>();
-//builder.Services.AddScoped<IEmployeeService, EmployeeService>();
-builder.Services.AddScoped<IAppointmentService, AppointmentService>();
-
 // AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));
 
 // Salon manager service & http context accessor
 builder.Services.AddHttpContextAccessor();
+
+// Dependency Injection
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ISalonService, SalonService>();
 builder.Services.AddScoped<ISalonManagerService, SalonManagerService>();
-builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+
+//builder.Services.AddScoped<IServiceService, ServiceService>();
+//builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 
 var app = builder.Build();
 

@@ -278,25 +278,25 @@ namespace SalonManagement.API.Services
             return Result.Success(_mapper.Map<EmployeeScheduleDto>(schedule));
         }
 
-        public async Task<Result<EmployeeScheduleDto>> UpdateEmployeeScheduleAsync(Guid id, UpdateEmployeeScheduleDto dto, CancellationToken cancellationToken = default)
-        {
-            var manager = await GetCurrentManagerAsync(cancellationToken);
-            if (manager == null) return Result.Failure<EmployeeScheduleDto>("Unauthorized.");
+        //public async Task<Result<EmployeeScheduleDto>> UpdateEmployeeScheduleAsync(Guid id, UpdateEmployeeScheduleDto dto, CancellationToken cancellationToken = default)
+        //{
+        //    var manager = await GetCurrentManagerAsync(cancellationToken);
+        //    if (manager == null) return Result.Failure<EmployeeScheduleDto>("Unauthorized.");
 
-            var schedule = await _context.EmployeeSchedules.FirstOrDefaultAsync(s => s.Id == id, cancellationToken);
-            if (schedule == null) return Result.Failure<EmployeeScheduleDto>("Schedule not found.");
+        //    var schedule = await _context.EmployeeSchedules.FirstOrDefaultAsync(s => s.Id == id, cancellationToken);
+        //    if (schedule == null) return Result.Failure<EmployeeScheduleDto>("Schedule not found.");
 
-            // verify schedule belongs to salon
-            var employee = await _context.Employees.FirstOrDefaultAsync(e => e.Id == schedule.EmployeeId && e.SalonId == manager.SalonId, cancellationToken);
-            if (employee == null) return Result.Failure<EmployeeScheduleDto>("Not allowed.");
+        //    // verify schedule belongs to salon
+        //    var employee = await _context.Employees.FirstOrDefaultAsync(e => e.Id == schedule.EmployeeId && e.SalonId == manager.SalonId, cancellationToken);
+        //    if (employee == null) return Result.Failure<EmployeeScheduleDto>("Not allowed.");
 
-           // schedule.SetActive(dto.IsActive);
-            schedule.UpdateSchedule(dto.StartTime, dto.EndTime); // assume method exists or implement UpdateTimes accordingly
-            _context.EmployeeSchedules.Update(schedule);
-            await _context.SaveChangesAsync(cancellationToken);
+        //   // schedule.SetActive(dto.IsActive);
+        //    schedule.UpdateSchedule(dto.StartTime, dto.EndTime); // assume method exists or implement UpdateTimes accordingly
+        //    _context.EmployeeSchedules.Update(schedule);
+        //    await _context.SaveChangesAsync(cancellationToken);
 
-            return Result.Success(_mapper.Map<EmployeeScheduleDto>(schedule));
-        }
+        //    return Result.Success(_mapper.Map<EmployeeScheduleDto>(schedule));
+        //}
 
         public async Task<Result> DeleteEmployeeScheduleAsync(Guid id, CancellationToken cancellationToken = default)
         {

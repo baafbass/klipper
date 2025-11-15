@@ -91,36 +91,36 @@ namespace SalonManagement.API.Services
             return Result.Success(_mapper.Map<EmployeeScheduleDto>(schedule));
         }
 
-        public async Task<Result<EmployeeScheduleDto>> UpdateMyScheduleAsync(Guid id, EmployeeDtos.EmployeeScheduleRequestDto dto, CancellationToken cancellationToken = default)
-        {
-            var emp = await GetCurrentEmployeeAsync(cancellationToken);
-            if (emp == null) return Result.Failure<EmployeeScheduleDto>("Unauthorized.");
+        //public async Task<Result<EmployeeScheduleDto>> UpdateMyScheduleAsync(Guid id, EmployeeDtos.EmployeeScheduleRequestDto dto, CancellationToken cancellationToken = default)
+        //{
+        //    var emp = await GetCurrentEmployeeAsync(cancellationToken);
+        //    if (emp == null) return Result.Failure<EmployeeScheduleDto>("Unauthorized.");
 
-            var schedule = await _context.EmployeeSchedules.FirstOrDefaultAsync(s => s.Id == id && s.EmployeeId == emp.Id, cancellationToken);
-            if (schedule == null) return Result.Failure<EmployeeScheduleDto>("Schedule not found.");
+        //    var schedule = await _context.EmployeeSchedules.FirstOrDefaultAsync(s => s.Id == id && s.EmployeeId == emp.Id, cancellationToken);
+        //    if (schedule == null) return Result.Failure<EmployeeScheduleDto>("Schedule not found.");
 
-            // validate against salon working hours
-            var salonWh = await _context.SalonWorkingHours.FirstOrDefaultAsync(w => w.SalonId == emp.SalonId && w.DayOfWeek == dto.DayOfWeek, cancellationToken);
-            if (salonWh == null || !salonWh.IsOpen)
-                return Result.Failure<EmployeeScheduleDto>("Salon is closed on that day; cannot update schedule.");
-            if (dto.StartTime < salonWh.OpenTime || dto.EndTime > salonWh.CloseTime)
-                return Result.Failure<EmployeeScheduleDto>("Schedule must be within salon working hours.");
-            if (dto.EndTime <= dto.StartTime)
-                return Result.Failure<EmployeeScheduleDto>("End time must be after start time.");
+        //    // validate against salon working hours
+        //    var salonWh = await _context.SalonWorkingHours.FirstOrDefaultAsync(w => w.SalonId == emp.SalonId && w.DayOfWeek == dto.DayOfWeek, cancellationToken);
+        //    if (salonWh == null || !salonWh.IsOpen)
+        //        return Result.Failure<EmployeeScheduleDto>("Salon is closed on that day; cannot update schedule.");
+        //    if (dto.StartTime < salonWh.OpenTime || dto.EndTime > salonWh.CloseTime)
+        //        return Result.Failure<EmployeeScheduleDto>("Schedule must be within salon working hours.");
+        //    if (dto.EndTime <= dto.StartTime)
+        //        return Result.Failure<EmployeeScheduleDto>("End time must be after start time.");
 
-            // optional: check overlap excluding this schedule
-            var overlaps = await _context.EmployeeSchedules.AnyAsync(s =>
-                s.EmployeeId == emp.Id && s.DayOfWeek == dto.DayOfWeek && s.Id != id &&
-                s.IsActive &&
-                !(dto.EndTime <= s.StartTime || dto.StartTime >= s.EndTime), cancellationToken);
-            if (overlaps) return Result.Failure<EmployeeScheduleDto>("Schedule overlaps an existing one.");
+        //    // optional: check overlap excluding this schedule
+        //    var overlaps = await _context.EmployeeSchedules.AnyAsync(s =>
+        //        s.EmployeeId == emp.Id && s.DayOfWeek == dto.DayOfWeek && s.Id != id &&
+        //        s.IsActive &&
+        //        !(dto.EndTime <= s.StartTime || dto.StartTime >= s.EndTime), cancellationToken);
+        //    if (overlaps) return Result.Failure<EmployeeScheduleDto>("Schedule overlaps an existing one.");
 
-            schedule.UpdateSchedule(dto.StartTime, dto.EndTime);
-            _context.EmployeeSchedules.Update(schedule);
-            await _context.SaveChangesAsync(cancellationToken);
+        //    schedule.UpdateSchedule(dto.StartTime, dto.EndTime);
+        //    _context.EmployeeSchedules.Update(schedule);
+        //    await _context.SaveChangesAsync(cancellationToken);
 
-            return Result.Success(_mapper.Map<EmployeeScheduleDto>(schedule));
-        }
+        //    return Result.Success(_mapper.Map<EmployeeScheduleDto>(schedule));
+        //}
 
         public async Task<Result> DeleteMyScheduleAsync(Guid id, CancellationToken cancellationToken = default)
         {
