@@ -182,7 +182,7 @@ namespace SalonManagement.API.Services
             var emp = await GetCurrentEmployeeAsync(cancellationToken);
             if (emp == null) return Result.Failure("Unauthorized.");
 
-            var link = await _context.EmployeeServices.FirstOrDefaultAsync(es => es.Id == employeeServiceId && es.EmployeeId == emp.Id, cancellationToken);
+            var link = await _context.EmployeeServices.FirstOrDefaultAsync(es => es.ServiceId == employeeServiceId && es.EmployeeId == emp.Id, cancellationToken);
             if (link == null) return Result.Failure("Link not found.");
 
             link.Deactivate();

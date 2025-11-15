@@ -384,7 +384,7 @@ export default function SalonManagerDashboard() {
                   </div>
 
                   <div>
-                    <div className="grid grid-cols-3 gap-3">
+   {/*                 <div className="grid grid-cols-3 gap-3">
                       <div>
                         <label className="text-sm">Day</label>
                         <select id="sch-day" className="w-full p-2 border">
@@ -407,7 +407,7 @@ export default function SalonManagerDashboard() {
                         const end = (document.getElementById('sch-end') as HTMLInputElement).value;
                         addSchedule(selectedEmployee.id, day, start, end);
                       }} className="px-3 py-1 bg-green-600 text-white rounded">Add schedule</button>
-                    </div>
+                    </div>*/}
 
                     <div className="mt-4">
                       {schedules.length === 0 && <div className="text-gray-400">No schedules</div>}
@@ -416,7 +416,6 @@ export default function SalonManagerDashboard() {
                           <li key={s.id} className="py-2 flex justify-between">
                             <div>{dayNames[s.dayOfWeek]} — {s.startTime} - {s.endTime}</div>
                             <div>
-                              <button onClick={() => alert('Edit not implemented in this UI sample')} className="px-2 py-1 border rounded mr-2">Edit</button>
                               <button onClick={() => { if(confirm('Delete schedule?')) managerApi.deleteEmployeeSchedule(s.id).then(()=>loadSchedules(selectedEmployee.id)); }} className="px-2 py-1 border rounded text-red-600">Delete</button>
                             </div>
                           </li>

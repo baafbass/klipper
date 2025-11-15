@@ -190,8 +190,7 @@ export default function EmployeeDashboard() {
                         <div className="text-sm text-gray-600">{ms.durationMinutes} min • {ms.price}</div>
                       </div>
                       <div>
-                        {/* remove requires employeeServiceId; if backend returns only service DTO, you may need an endpoint to remove by serviceId */}
-                        <button onClick={() => alert('Use Remove service from manager panel or implement endpoint to remove by serviceId')} className="px-3 py-1 border rounded text-red-600">Remove</button>
+                        <button onClick={() => removeService(ms.id)} className="px-3 py-1 border rounded text-red-600">Remove</button>
                       </div>
                     </li>
                   ))}
