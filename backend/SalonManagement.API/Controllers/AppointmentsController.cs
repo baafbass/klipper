@@ -1,95 +1,60 @@
-//// SalonManagement.API/Controllers/AppointmentsController.cs
-//using Microsoft.AspNetCore.Authorization;
-//using Microsoft.AspNetCore.Mvc;
-//using SalonManagement.Application.DTOs;
-//using SalonManagement.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SalonManagement.API.DTOs;
+using SalonManagement.API.Repositories.Interfaces;
 
-//namespace SalonManagement.API.Controllers
-//{
-//    [Authorize]
-//    public class AppointmentsController : BaseApiController
-//    {
-//        private readonly IAppointmentService _appointmentService;
+namespace SalonManagement.API.Controllers
+{
+    [ApiController]
+    [Route("api/appointments")]
+    [Produces("application/json")]
+    public class AppointmentsController : BaseApiController
+    {
+        private readonly IAppointmentService _service;
 
-//        public AppointmentsController(IAppointmentService appointmentService)
-//        {
-//            _appointmentService = appointmentService;
-//        }
+        public AppointmentsController(IAppointmentService service)
+        {
+            _service = service;
+        }
 
-//        [HttpPost]
-//        public async Task<IActionResult> Create([FromBody] CreateAppointmentDto dto)
-//        {
-//            var result = await _appointmentService.CreateAppointmentAsync(dto);
-//            return HandleResult(result);
-//        }
+        // Customer: get my appointments
+        [HttpGet("me")]
+        [Authorize(Roles = "Customer")]
+        public async Task<IActionResult> GetMyAppointments()
+            => HandleResult(await _service.GetMyAppointmentsAsync());
 
-//        [HttpGet("{id}")]
-//        public async Task<IActionResult> GetById(Guid id)
-//        {
-//            var result = await _appointmentService.GetAppointmentByIdAsync(id);
-//            return HandleResult(result);
-//        }
+        [HttpGet("{id:guid}")]
+        [Authorize]
+        public async Task<IActionResult> GetById(Guid id)
+            => HandleResult(await _service.GetAppointmentByIdAsync(id));
 
-//        [HttpGet("customer/{customerId}")]
-//        public async Task<IActionResult> GetCustomerAppointments(Guid customerId)
-//        {
-//            var result = await _appointmentService.GetCustomerAppointmentsAsync(customerId);
-//            return HandleResult(result);
-//        }
+        // Availability (anyone authenticated or anonymous if you prefer)
+        [HttpPost("availability")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetAvailability([FromBody] AvailabilityRequestDto request)
+            => HandleResult(await _service.GetAvailabilityAsync(request));
 
-//        [HttpGet("employee/{employeeId}")]
-//        [Authorize(Roles = "Employee,SalonManager,SystemAdmin")]
-//        public async Task<IActionResult> GetEmployeeAppointments(Guid employeeId, [FromQuery] DateTime date)
-//        {
-//            var result = await _appointmentService.GetEmployeeAppointmentsAsync(employeeId, date);
-//            return HandleResult(result);
-//        }
+        // Create appointment (customer)
+        [HttpPost]
+        [Authorize(Roles = "Customer")]
+        public async Task<IActionResult> Create([FromBody] CreateAppointmentDto dto)
+            => HandleResult(await _service.CreateAppointmentAsync(dto));
 
-//        [HttpGet("salon/{salonId}")]
-//        [Authorize(Roles = "SalonManager,SystemAdmin")]
-//        public async Task<IActionResult> GetSalonAppointments(
-//            Guid salonId,
-//            [FromQuery] DateTime startDate,
-//            [FromQuery] DateTime endDate)
-//        {
-//            var result = await _appointmentService.GetSalonAppointmentsAsync(salonId, startDate, endDate);
-//            return HandleResult(result);
-//        }
+        // Confirm (manager or employee)
+        [HttpPost("{id:guid}/confirm")]
+        [Authorize(Roles = "SalonManager,Employee")]
+        public async Task<IActionResult> Confirm(Guid id)
+            => HandleResult(await _service.ConfirmAppointmentAsync(id));
 
-//        [HttpPost("availability")]
-//        [AllowAnonymous]
-//        public async Task<IActionResult> GetAvailableTimeSlots([FromBody] AvailabilityRequestDto request)
-//        {
-//            var result = await _appointmentService.GetAvailableTimeSlotsAsync(request);
-//            return HandleResult(result);
-//        }
+        // Cancel
+        [HttpPost("{id:guid}/cancel")]
+        [Authorize]
+        public async Task<IActionResult> Cancel(Guid id, [FromBody] CancelAppointmentRequestDto body)
+            => HandleResult(await _service.CancelAppointmentAsync(id, body.Reason));
+    }
 
-//        [HttpPatch("{id}/confirm")]
-//        [Authorize(Roles = "Employee,SalonManager,SystemAdmin")]
-//        public async Task<IActionResult> Confirm(Guid id)
-//        {
-//            var result = await _appointmentService.ConfirmAppointmentAsync(id);
-//            return HandleResult(result);
-//        }
-
-//        [HttpPatch("{id}/cancel")]
-//        public async Task<IActionResult> Cancel(Guid id, [FromBody] CancelAppointmentDto dto)
-//        {
-//            var result = await _appointmentService.CancelAppointmentAsync(id, dto.Reason);
-//            return HandleResult(result);
-//        }
-
-//        [HttpPatch("{id}/complete")]
-//        [Authorize(Roles = "Employee,SalonManager,SystemAdmin")]
-//        public async Task<IActionResult> Complete(Guid id)
-//        {
-//            var result = await _appointmentService.CompleteAppointmentAsync(id);
-//            return HandleResult(result);
-//        }
-//    }
-
-//    public class CancelAppointmentDto
-//    {
-//        public string Reason { get; set; }
-//    }
-//}
+    public class CancelAppointmentRequestDto
+    {
+        public string Reason { get; set; }
+    }
+}

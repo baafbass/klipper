@@ -205,7 +205,7 @@ export interface Appointment {
     customerName: string;
     employeeId: string;
     employeeName: string;
-    salonId: string;
+    salonId: string | undefined;
     salonName: string;
     appointmentDate: string;
     startTime: string;
@@ -213,6 +213,7 @@ export interface Appointment {
     status: 'Pending' | 'Confirmed' | 'Completed' | 'Cancelled' | 'NoShow';
     totalPrice: number;
     totalDurationMinutes: number;
+    serviceIds: string[];
     notes: string;
     services: AppointmentService[];
 }

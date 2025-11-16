@@ -60,6 +60,22 @@ namespace SalonManagement.API.Mapping
             // Service Mappings
             CreateMap<Service, ServiceDto>();
 
+            // add near the Service -> ServiceDto mapping
+            CreateMap<Service, ServiceWithEmployeesDto>()
+                .ForMember(d => d.Id, o => o.MapFrom(s => s.Id))
+                .ForMember(d => d.Name, o => o.MapFrom(s => s.Name))
+                .ForMember(d => d.Description, o => o.MapFrom(s => s.Description))
+                .ForMember(d => d.DurationMinutes, o => o.MapFrom(s => s.DurationMinutes))
+                .ForMember(d => d.Price, o => o.MapFrom(s => s.Price))
+                .ForMember(d => d.Category, o => o.MapFrom(s => s.Category))
+                .ForMember(d => d.IsActive, o => o.MapFrom(s => s.IsActive))
+                .ForMember(d => d.Employees, o => o.MapFrom(s =>
+                    s.EmployeeServices
+                     .Where(es => es.IsActive && es.Employee != null && es.Employee.IsActive)
+                     .Select(es => es.Employee)  // maps to UserDto via existing mapping
+                ));
+
+
             CreateMap<CreateServiceDto, Service>()
                 .ConvertUsing(src => new Service(
                     src.SalonId,
@@ -92,6 +108,51 @@ namespace SalonManagement.API.Mapping
                     src.StartTime,
                     src.EndTime));
 
+            CreateMap<AppointmentService, AppointmentServiceDto>()
+                .ForMember(d => d.ServiceId, o => o.MapFrom(s => s.ServiceId))
+                .ForMember(d => d.ServiceName, o => o.MapFrom(s => s.Service != null ? s.Service.Name : string.Empty))
+                .ForMember(d => d.Price, o => o.MapFrom(s => s.Price))
+                .ForMember(d => d.DurationMinutes, o => o.MapFrom(s => s.DurationMinutes));
+
+            CreateMap<Appointment, AppointmentDto>()
+                .ForMember(d => d.CustomerName, o => o.MapFrom(a => a.Customer != null ? a.Customer.GetFullName() : string.Empty))
+                .ForMember(d => d.EmployeeName, o => o.MapFrom(a => a.Employee != null ? a.Employee.GetFullName() : string.Empty))
+                .ForMember(d => d.SalonName, o => o.MapFrom(a => a.Salon != null ? a.Salon.Name : string.Empty))
+                .ForMember(d => d.Services, o => o.MapFrom(a => a.AppointmentServices))
+                .ForMember(d => d.StartTime, o => o.MapFrom(a => a.StartTime))
+                .ForMember(d => d.EndTime, o => o.MapFrom(a => a.EndTime))
+                .ForMember(d => d.Status, o => o.MapFrom(a => a.Status.ToString()));
+
+            CreateMap<AvailableTimeSlotDto, AvailableTimeSlotDto>(); // identity mapping - not necessary but safe
+
+            // Map Service -> ServiceWithEmployeesDto (makes Employees list from EmployeeServices)
+            CreateMap<Service, ServiceWithEmployeesDto>()
+                .ForMember(d => d.Id, o => o.MapFrom(s => s.Id))
+                .ForMember(d => d.Name, o => o.MapFrom(s => s.Name))
+                .ForMember(d => d.Description, o => o.MapFrom(s => s.Description))
+                .ForMember(d => d.DurationMinutes, o => o.MapFrom(s => s.DurationMinutes))
+                .ForMember(d => d.Price, o => o.MapFrom(s => s.Price))
+                .ForMember(d => d.Category, o => o.MapFrom(s => s.Category))
+                .ForMember(d => d.IsActive, o => o.MapFrom(s => s.IsActive))
+                // map employees who can perform the service
+                .ForMember(d => d.Employees, o => o.MapFrom(s =>
+                    s.EmployeeServices
+                        .Where(es => es.IsActive && es.Employee != null && es.Employee.IsActive)
+                        .Select(es => es.Employee)
+                ));
+
+            // Map Salon -> SalonDetailsDto (include services and workinghours)
+            CreateMap<Salon, SalonDetailsDto>()
+                .ForMember(d => d.Id, o => o.MapFrom(s => s.Id))
+                .ForMember(d => d.Name, o => o.MapFrom(s => s.Name))
+                .ForMember(d => d.Description, o => o.MapFrom(s => s.Description))
+                .ForMember(d => d.Address, o => o.MapFrom(s => s.Address))
+                .ForMember(d => d.City, o => o.MapFrom(s => s.City))
+                .ForMember(d => d.PhoneNumber, o => o.MapFrom(s => s.PhoneNumber))
+                .ForMember(d => d.Email, o => o.MapFrom(s => s.Email))
+                .ForMember(d => d.IsActive, o => o.MapFrom(s => s.IsActive))
+                .ForMember(d => d.Services, o => o.MapFrom(s => s.Services.Where(sv => sv.IsActive)))
+                .ForMember(d => d.WorkingHours, o => o.MapFrom(s => s.WorkingHours));
         }
     }
 }

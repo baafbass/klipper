@@ -11,6 +11,7 @@ import SalonManagerLoginPage from './pages/SalonManagerLoginPage';
 import SalonManagerDashboard from './pages/SalonManagerDashboard';
 import EmployeeLoginPage from './pages/EmployeeLoginPage';
 import EmployeeDashboard from './pages/EmployeeDashboard';
+import HomeAppointments from './pages/HomeAppointments';
 
 import { useAuthStore } from './store/authStore';
 import { JSX } from 'react/jsx-runtime';
@@ -34,6 +35,7 @@ export default function App() {
                 <Route path="/salon-manager-login" element={<SalonManagerLoginPage/>}/>
                 <Route path="/employee-login" element={<EmployeeLoginPage/>}/>
                 <Route path="/employee/dashboard" element={<EmployeeDashboard/>}/>
+                <Route path="/appointments" element={<HomeAppointments/>}/>
 
                 <Route path="/salon-manager/dashboard" element={<SalonManagerDashboard/>}/>
                 <Route path="/admin/login" element={<SystemAdminLoginPage />} />

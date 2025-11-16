@@ -25,7 +25,7 @@ export default function LoginForm() {
             const res = await authApi.login(form);
             const { token, user } = res.data;
             loginStore.login(user, token);
-            navigate('/');
+            navigate('/appointments');
         } catch (err: any) {
             setError(err?.response?.data?.message || 'Login failed');
         } finally {

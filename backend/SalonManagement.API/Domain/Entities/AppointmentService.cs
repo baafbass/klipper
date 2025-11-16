@@ -17,6 +17,13 @@ namespace SalonManagement.API.Domain.Entities
 
         private AppointmentService() { }
 
+        public AppointmentService(Guid serviceId, decimal price, int durationMinutes)
+        {
+            ServiceId = serviceId;
+            Price = price;
+            DurationMinutes = durationMinutes;
+        }
+
         public AppointmentService(Guid appointmentId, Guid serviceId, decimal price, int durationMinutes)
         {
             AppointmentId = appointmentId;

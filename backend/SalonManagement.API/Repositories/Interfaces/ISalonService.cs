@@ -10,10 +10,13 @@ namespace SalonManagement.API.Repositories.Interfaces
     {
         Task<Result<IEnumerable<SalonDto>>> GetAllSalonsAsync(CancellationToken cancellationToken = default);
         Task<Result<SalonDto>> GetSalonByIdAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<Result<SalonDto>> GetSalonWithDetailsAsync(Guid id, CancellationToken cancellationToken = default);
         Task<Result<SalonDto>> CreateSalonAsync(CreateSalonDto dto, CancellationToken cancellationToken = default);
         Task<Result<SalonDto>> UpdateSalonAsync(Guid id, UpdateSalonDto dto, CancellationToken cancellationToken = default);
         Task<Result> DeleteSalonAsync(Guid id, CancellationToken cancellationToken = default);
         Task<Result<SalonManagerDto>> AddManagerAsync(Guid salonId, SalonManagerRequestDto dto, CancellationToken cancellationToken = default);
+        Task<Result<SalonDetailsDto>> GetSalonDetailsAsync(Guid id, CancellationToken cancellationToken = default);
+
         //Task<Result<IEnumerable<SalonDto>>> SearchSalonsByCityAsync(string city, CancellationToken cancellationToken = default);
     }
 }

@@ -15,8 +15,8 @@ namespace SalonManagement.API.Domain.Entities
         public AppointmentStatus Status { get; private set; }
         public decimal TotalPrice { get; private set; }
         public int TotalDurationMinutes { get; private set; }
-        public string Notes { get; private set; }
-        public string CancellationReason { get; private set; }
+        public string? Notes { get; private set; }
+        public string? CancellationReason { get; private set; }
 
         // Navigation properties
         public virtual Customer Customer { get; private set; }
@@ -49,7 +49,7 @@ namespace SalonManagement.API.Domain.Entities
             if (Status != AppointmentStatus.Pending)
                 throw new InvalidOperationException("Cannot add services to non-pending appointment");
 
-            var appointmentService = new AppointmentService(Id, service.Id, service.Price, service.DurationMinutes);
+            var appointmentService = new AppointmentService(service.Id, service.Price, service.DurationMinutes);
             AppointmentServices.Add(appointmentService);
 
             RecalculateTotals();

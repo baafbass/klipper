@@ -77,6 +77,11 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ISalonService, SalonService>();
 builder.Services.AddScoped<ISalonManagerService, SalonManagerService>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+// Repositories
+builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+builder.Services.AddScoped<IAppointmentService, AppointmentService>();
+// Services
+//builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 
 //builder.Services.AddScoped<IServiceService, ServiceService>();
 //builder.Services.AddScoped<IAppointmentService, AppointmentService>();

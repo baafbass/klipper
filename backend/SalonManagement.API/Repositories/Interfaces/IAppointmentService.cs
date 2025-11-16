@@ -1,21 +1,21 @@
-using SalonManagement.API.DTOs;
 using SalonManagement.API.Domain.Common;
-using System.Threading;
-using System.Threading.Tasks;
+using SalonManagement.API.DTOs;
 
-// SalonManagement.Application/Interfaces/IAppointmentService.cs
 namespace SalonManagement.API.Repositories.Interfaces
 {
     public interface IAppointmentService
     {
+        // Customer-facing
+        Task<Result<IEnumerable<AppointmentDto>>> GetMyAppointmentsAsync(CancellationToken cancellationToken = default);
+        Task<Result<AppointmentDto>> GetAppointmentByIdAsync(Guid id, CancellationToken cancellationToken = default);
+
+        // Availability: returns available slots for given salon/date/services (employee nullable -> search across employees)
+        Task<Result<IEnumerable<AvailableTimeSlotDto>>> GetAvailabilityAsync(AvailabilityRequestDto request, CancellationToken cancellationToken = default);
+
         Task<Result<AppointmentDto>> CreateAppointmentAsync(CreateAppointmentDto dto, CancellationToken cancellationToken = default);
-        //Task<Result<AppointmentDto>> GetAppointmentByIdAsync(Guid id, CancellationToken cancellationToken = default);
-        //Task<Result<IEnumerable<AppointmentDto>>> GetCustomerAppointmentsAsync(Guid customerId, CancellationToken cancellationToken = default);
-        //Task<Result<IEnumerable<AppointmentDto>>> GetEmployeeAppointmentsAsync(Guid employeeId, DateTime date, CancellationToken cancellationToken = default);
-        //Task<Result<IEnumerable<AppointmentDto>>> GetSalonAppointmentsAsync(Guid salonId, DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default);
-        //Task<Result> ConfirmAppointmentAsync(Guid id, CancellationToken cancellationToken = default);
-        //Task<Result> CancelAppointmentAsync(Guid id, string reason, CancellationToken cancellationToken = default);
-        //Task<Result> CompleteAppointmentAsync(Guid id, CancellationToken cancellationToken = default);
-        Task<Result<IEnumerable<AvailableTimeSlotDto>>> GetAvailableTimeSlotsAsync(AvailabilityRequestDto request, CancellationToken cancellationToken = default);
+
+        // Approval / workflow
+        Task<Result> ConfirmAppointmentAsync(Guid appointmentId, CancellationToken cancellationToken = default); // manager or employee
+        Task<Result> CancelAppointmentAsync(Guid appointmentId, string reason, CancellationToken cancellationToken = default);
     }
 }

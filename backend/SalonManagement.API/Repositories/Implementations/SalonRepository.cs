@@ -23,11 +23,15 @@ namespace SalonManagement.API.Repositories.Implementations
         public async Task<Salon> GetSalonWithDetailsAsync(Guid id, CancellationToken cancellationToken = default)
         {
             return await _dbSet
-                .Include(s => s.Services.Where(sv => sv.IsActive))
+                .Include(s => s.Services)
+                    .ThenInclude(sv => sv.EmployeeServices)
+                        .ThenInclude(es => es.Employee)
                 .Include(s => s.WorkingHours)
-                .Include(s => s.Employees.Where(e => e.IsActive))
+                .Include(s => s.Employees)
+                .Include(s => s.Managers)
                 .FirstOrDefaultAsync(s => s.Id == id, cancellationToken);
         }
+
 
         //public async Task<IEnumerable<Salon>> SearchSalonsByCity(string city, CancellationToken cancellationToken = default)
         //{

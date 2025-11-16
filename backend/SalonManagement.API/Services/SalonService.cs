@@ -47,6 +47,44 @@ namespace SalonManagement.API.Services
             var dto = _mapper.Map<SalonDto>(salon);
             return Result.Success(dto);
         }
+        
+        public async Task<Result<SalonDto>> GetSalonWithDetailsAsync(Guid id, CancellationToken cancellationToken = default)
+        {
+            var salon = await _context.Salons
+                .Include(s => s.WorkingHours)
+                .Include(s => s.Services)
+                .Include(s => s.Employees)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(s => s.Id == id, cancellationToken);
+
+            if (salon == null)
+                return Result.Failure<SalonDto>($"Salon with id '{id}' not found.");
+
+            var dto = _mapper.Map<SalonDto>(salon);
+            return Result.Success(dto);
+        }
+
+        public async Task<Result<SalonDetailsDto>> GetSalonDetailsAsync(Guid id, CancellationToken cancellationToken = default)
+        {
+            var salon = await _context.Salons
+      .Where(s => s.Id == id)
+      .Include(s => s.Services)
+          .ThenInclude(sv => sv.EmployeeServices)
+              .ThenInclude(es => es.Employee)
+      .Include(s => s.WorkingHours)
+      .Include(s => s.Employees)
+      .AsNoTracking()
+      .AsSplitQuery()   // <<-- use split query
+      .FirstOrDefaultAsync(cancellationToken);
+
+            if (salon == null) return Result.Failure<SalonDetailsDto>("Salon not found.");
+
+            var dto = _mapper.Map<SalonDetailsDto>(salon);
+            return Result.Success(dto);
+        }
+
+
+
 
         public async Task<Result<SalonDto>> CreateSalonAsync(CreateSalonDto dto, CancellationToken cancellationToken = default)
         {
