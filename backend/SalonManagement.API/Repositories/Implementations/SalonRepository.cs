@@ -31,14 +31,5 @@ namespace SalonManagement.API.Repositories.Implementations
                 .Include(s => s.Managers)
                 .FirstOrDefaultAsync(s => s.Id == id, cancellationToken);
         }
-
-
-        //public async Task<IEnumerable<Salon>> SearchSalonsByCity(string city, CancellationToken cancellationToken = default)
-        //{
-        //    return await _dbSet
-        //        .Where(s => s.IsActive && s.City.Contains(city))
-        //        .Include(s => s.WorkingHours)
-        //        .ToListAsync(cancellationToken);
-        //}
     }
 }

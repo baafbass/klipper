@@ -175,3 +175,4 @@ C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.API\obj\Debug\net9.0\ref
 C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.API\obj\Debug\net9.0\SalonManagement.API.pdb
 C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.API\obj\Debug\net9.0\SalonManagement.API.genruntimeconfig.cache
 C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.API\obj\Debug\net9.0\ref\SalonManagement.API.dll
+C:\Users\Lenovo\Desktop\klipper\backend\SalonManagement.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

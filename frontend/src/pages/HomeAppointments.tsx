@@ -1,9 +1,11 @@
+// src/pages/HomeAppointments.tsx
 import React, { useEffect, useState } from 'react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import { salonApi } from '../api/salon';
 import { appointmentApi } from '../api/appointments';
 import { useAuthStore } from '../store/authStore';
+import dayjs from 'dayjs';
 
 export default function HomeAppointments() {
   const [salons, setSalons] = useState<any[]>([]);
@@ -14,19 +16,38 @@ export default function HomeAppointments() {
   const [selectedEmployeeId, setSelectedEmployeeId] = useState<string | null>(null);
   const [selectedSlot, setSelectedSlot] = useState<any | null>(null);
   const [notes, setNotes] = useState('');
+  const [myAppointments, setMyAppointments] = useState<any[]>([]);
+  const [loadingAppointments, setLoadingAppointments] = useState(false);
+
   const auth = useAuthStore();
 
-  useEffect(() => { loadSalons(); }, []);
+  useEffect(() => {
+    loadSalons();
+    if (auth.isAuthenticated) loadMyAppointments();
+    // refresh appointments when user logs in/out
+  }, [auth.isAuthenticated]);
 
   async function loadSalons() {
-    const res = await salonApi.getAll();
-    setSalons(res.data);
+    try {
+      const res = await salonApi.getAll();
+      setSalons(res.data || []);
+    } catch (err:any) {
+      console.error('Failed loading salons', err);
+    }
   }
 
   async function loadSalonDetails(id: string) {
-    const res = await salonApi.getDetails(id); // new endpoint
-    setSelectedSalon(res.data);
-    // selectedSalon.Services will have: id,name,durationMinutes,price,employees: [userDto,...]
+    try {
+      const res = await salonApi.getDetails(id);
+      setSelectedSalon(res.data);
+      // clear previous selection/state
+      setAvailability([]);
+      setSelectedServiceIds([]);
+      setSelectedEmployeeId(null);
+    } catch (err:any) {
+      console.error('Failed loading salon details', err);
+      alert(err?.response?.data?.error || 'Failed to load salon');
+    }
   }
 
   function selectService(id: string) {
@@ -46,14 +67,31 @@ export default function HomeAppointments() {
         serviceIds: selectedServiceIds,
       };
       const res = await appointmentApi.getAvailability(payload);
-      setAvailability(res.data);
+      // backend returns StartTime/EndTime as timespan strings or HH:mm:ss — keep as-is
+      setAvailability(res.data || []);
     } catch (err:any) {
+      console.error(err);
       alert(err?.response?.data?.error || 'Failed to check availability');
     }
   }
 
+  // helper to format times from backend (support TimeSpan strings)
+  const fmtTime = (t: string | null | undefined) => {
+    if (!t) return '';
+    // If t is "HH:mm:ss" or "hh:mm", use dayjs to format to "HH:mm"
+    const parsed = dayjs(`1970-01-01T${t}`);
+    return parsed.isValid() ? parsed.format('HH:mm') : t;
+  };
+
+  // ensure startTime is HH:mm:ss for server
+  const toTimeString = (time: string) => {
+    // if already "HH:mm:ss", return
+    if (/^\d{1,2}:\d{2}:\d{2}$/.test(time)) return time;
+    if (/^\d{1,2}:\d{2}$/.test(time)) return `${time}:00`;
+    return time;
+  };
+
   async function book(slot: any) {
-    console.log('selected slot',slot);
     if (!auth.user) { alert('Please login as customer'); return; }
     try {
       const payload = {
@@ -61,18 +99,50 @@ export default function HomeAppointments() {
         employeeId: slot.employeeId,
         salonId: selectedSalon.id,
         appointmentDate: date,
-        startTime: slot.startTime,
+        startTime: toTimeString(slot.startTime),
         serviceIds: selectedServiceIds,
         notes
       };
-      await appointmentApi.createAppointment(payload);
+      const res = await appointmentApi.createAppointment(payload);
       alert('Appointment created successfully (pending).');
       setAvailability([]);
       setSelectedServiceIds([]);
       setSelectedSlot(null);
+      setNotes('');
+      // reload customer's appointments
+      loadMyAppointments();
     } catch (err:any) {
-      console.log('error',err);
+      console.error('Booking error', err);
       alert(err?.response?.data?.error || 'Booking failed');
+    }
+  }
+
+  async function loadMyAppointments() {
+    if (!auth.isAuthenticated) {
+      setMyAppointments([]);
+      return;
+    }
+    setLoadingAppointments(true);
+    try {
+      const res = await appointmentApi.getMyAppointments();
+      setMyAppointments(res.data || []);
+    } catch (err:any) {
+      console.error('Failed loading appointments', err);
+      setMyAppointments([]);
+    } finally {
+      setLoadingAppointments(false);
+    }
+  }
+
+  async function cancelAppointment(id: string) {
+    if (!window.confirm('Cancel this appointment?')) return;
+    try {
+      await appointmentApi.cancelAppointment(id, 'Cancelled by customer');
+      alert('Appointment cancelled.');
+      loadMyAppointments();
+    } catch (err:any) {
+      console.error(err);
+      alert(err?.response?.data?.error || 'Failed to cancel');
     }
   }
 
@@ -80,7 +150,8 @@ export default function HomeAppointments() {
     <div>
       <Header />
       <main className="container mx-auto p-6">
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-4 gap-6">
+          {/* Salons list */}
           <div className="col-span-1 bg-white p-4 rounded shadow">
             <h2 className="font-semibold">Salons</h2>
             <ul>
@@ -94,10 +165,59 @@ export default function HomeAppointments() {
                 </li>
               ))}
             </ul>
+
+            {/* My Appointments */}
+            <div className="mt-6">
+              <h3 className="font-semibold">My Appointments</h3>
+              {!auth.isAuthenticated && <div className="text-sm text-gray-500 mt-2">Log in as a customer to see your bookings.</div>}
+              {auth.isAuthenticated && (
+                <div className="mt-2">
+                  {loadingAppointments ? <div>Loading...</div> : (
+                    myAppointments.length === 0 ? (
+                      <div className="text-sm text-gray-500">No appointments yet.</div>
+                    ) : (
+                      <ul className="space-y-2">
+                        {myAppointments.map((a:any) => (
+                          <li key={a.id} className="p-2 border rounded">
+                            <div className="flex justify-between items-start">
+                              <div>
+                                <div className="font-medium">{a.salonName} • {a.employeeName}</div>
+                                <div className="text-sm text-gray-600">
+                                  {dayjs(a.appointmentDate).format('YYYY-MM-DD')} {fmtTime(a.startTime)} - {fmtTime(a.endTime)}
+                                </div>
+                                <div className="text-sm">Services:
+                                  <ul className="ml-3 list-disc">
+                                    {a.services?.map((s:any) => (
+                                      <li key={s.serviceId} className="text-sm text-gray-700">
+                                        {s.serviceName} — {s.durationMinutes} min — {s.price} ₺
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                                <div className="text-sm mt-1">Total: <strong>{a.totalPrice} ₺</strong> • Status: <strong>{a.status}</strong></div>
+                              </div>
+                              <div className="text-right">
+                                {/* If pending or confirmed, allow cancel */}
+                                {(a.status === 'Pending' || a.status === 'Confirmed') && (
+                                  <button onClick={() => cancelAppointment(a.id)} className="px-2 py-1 bg-red-600 text-white rounded text-sm">Cancel</button>
+                                )}
+                                <div className="text-xs text-gray-400 mt-2">#{a.id?.slice(0,8)}</div>
+                              </div>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    )
+                  )}
+                </div>
+              )}
+            </div>
           </div>
 
-          <div className="col-span-2">
-            {!selectedSalon && <div>Select a salon</div>}
+          {/* Main: selected salon and booking UI */}
+          <div className="col-span-3">
+            {!selectedSalon && <div className="bg-white p-6 rounded shadow">Select a salon</div>}
+
             {selectedSalon && (
               <div className="bg-white p-4 rounded shadow">
                 <h2 className="text-xl font-semibold">{selectedSalon.name}</h2>
@@ -150,10 +270,10 @@ export default function HomeAppointments() {
                               <li key={i} className="flex justify-between items-center py-2 border-b">
                                 <div>
                                   <div className="font-medium">{slot.employeeName}</div>
-                                  <div className="text-sm text-gray-600">{slot.startTime} - {slot.endTime} ({slot.durationMinutes ?? '—'} min)</div>
+                                  <div className="text-sm text-gray-600">{fmtTime(slot.startTime)} - {fmtTime(slot.endTime)} ({slot.durationMinutes ?? '—'} min)</div>
                                 </div>
                                 <div className="flex gap-2">
-                                  <button onClick={() => setSelectedSlot(slot)} className="px-3 py-1 bg-green-600 text-white rounded">Select</button>
+                                  <button onClick={() => { setSelectedSlot(slot); }} className="px-3 py-1 bg-green-600 text-white rounded">Select</button>
                                 </div>
                               </li>
                             ))}
@@ -163,7 +283,7 @@ export default function HomeAppointments() {
 
                       {selectedSlot && (
                         <div className="mt-4 p-3 border rounded bg-gray-50">
-                          <div>Selected: {selectedSlot.employeeName} — {selectedSlot.startTime} to {selectedSlot.endTime}</div>
+                          <div>Selected: {selectedSlot.employeeName} — {fmtTime(selectedSlot.startTime)} to {fmtTime(selectedSlot.endTime)}</div>
                           <label className="block mt-2">Notes
                             <textarea value={notes} onChange={(e)=>setNotes(e.target.value)} className="w-full p-2 border rounded mt-1" />
                           </label>
@@ -179,6 +299,7 @@ export default function HomeAppointments() {
 
               </div>
             )}
+
           </div>
         </div>
       </main>

@@ -80,11 +80,6 @@ builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 // Repositories
 builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
-// Services
-//builder.Services.AddScoped<IAppointmentService, AppointmentService>();
-
-//builder.Services.AddScoped<IServiceService, ServiceService>();
-//builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 
 var app = builder.Build();
 

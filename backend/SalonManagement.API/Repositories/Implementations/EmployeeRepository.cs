@@ -31,12 +31,7 @@ namespace SalonManagement.API.Repositories.Implementations
                 .FirstOrDefaultAsync(e => e.Id == id, cancellationToken);
         }
 
-        public async Task<IEnumerable<Employee>> GetAvailableEmployeesAsync(
-            Guid salonId,
-            DateTime date,
-            TimeSpan startTime,
-            TimeSpan endTime,
-            CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<Employee>> GetAvailableEmployeesAsync(Guid salonId,DateTime date,TimeSpan startTime,TimeSpan endTime,CancellationToken cancellationToken = default)
         {
             var dayOfWeek = (int)date.DayOfWeek;
 
