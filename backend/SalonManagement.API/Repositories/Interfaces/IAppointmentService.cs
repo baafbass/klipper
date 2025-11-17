@@ -13,6 +13,9 @@ namespace SalonManagement.API.Repositories.Interfaces
         Task<Result<IEnumerable<AvailableTimeSlotDto>>> GetAvailabilityAsync(AvailabilityRequestDto request, CancellationToken cancellationToken = default);
 
         Task<Result<AppointmentDto>> CreateAppointmentAsync(CreateAppointmentDto dto, CancellationToken cancellationToken = default);
+        Task<Result<IEnumerable<AppointmentDto>>> GetEmployeeAppointmentsAsync(CancellationToken cancellationToken = default);
+        Task<Result> CompleteAppointmentAsync(Guid appointmentId, CancellationToken cancellationToken = default);
+
 
         // Approval / workflow
         Task<Result> ConfirmAppointmentAsync(Guid appointmentId, CancellationToken cancellationToken = default); // manager or employee

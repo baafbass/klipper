@@ -46,6 +46,18 @@ namespace SalonManagement.API.Controllers
         public async Task<IActionResult> Confirm(Guid id)
             => HandleResult(await _service.ConfirmAppointmentAsync(id));
 
+        // Employee: get appointments assigned to the logged-in employee
+        [HttpGet("employee/me")]
+        [Authorize(Roles = "Employee")]
+        public async Task<IActionResult> GetForEmployee()
+            => HandleResult(await _service.GetEmployeeAppointmentsAsync());
+
+        // Complete appointment (employee or manager)
+        [HttpPost("{id:guid}/complete")]
+        [Authorize(Roles = "SalonManager,Employee")]
+        public async Task<IActionResult> Complete(Guid id)
+            => HandleResult(await _service.CompleteAppointmentAsync(id));
+
         // Cancel
         [HttpPost("{id:guid}/cancel")]
         [Authorize]

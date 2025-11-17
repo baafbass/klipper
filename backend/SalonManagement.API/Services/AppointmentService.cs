@@ -238,6 +238,58 @@ namespace SalonManagement.API.Services
             }
         }
 
+        // helper to get current employee (add near GetCurrentCustomerAsync)
+        private async Task<Employee?> GetCurrentEmployeeAsync(CancellationToken cancellationToken)
+        {
+            var user = _httpContextAccessor.HttpContext?.User;
+            if (user == null) return null;
+            var userIdClaim = user.FindFirst("userId")?.Value ?? user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim)) return null;
+            if (!Guid.TryParse(userIdClaim, out var uid)) return null;
+            return await _context.Employees.FirstOrDefaultAsync(e => e.Id == uid, cancellationToken);
+        }
+
+        // list appointments for the logged-in employee
+        public async Task<Result<IEnumerable<AppointmentDto>>> GetEmployeeAppointmentsAsync(CancellationToken cancellationToken = default)
+        {
+            var emp = await GetCurrentEmployeeAsync(cancellationToken);
+            if (emp == null) return Result.Failure<IEnumerable<AppointmentDto>>("Unauthorized.");
+
+            var appointments = await _context.Appointments
+                .Where(a => a.EmployeeId == emp.Id)
+                .Include(a => a.AppointmentServices).ThenInclude(asv => asv.Service)
+                .Include(a => a.Customer)
+                .Include(a => a.Salon)
+                .AsNoTracking()
+                .OrderBy(a => a.AppointmentDate).ThenBy(a => a.StartTime)
+                .ToListAsync(cancellationToken);
+
+            return Result.Success(_mapper.Map<IEnumerable<AppointmentDto>>(appointments));
+        }
+
+        // complete appointment (employee assigned or salon manager)
+        public async Task<Result> CompleteAppointmentAsync(Guid appointmentId, CancellationToken cancellationToken = default)
+        {
+            var user = _httpContextAccessor.HttpContext?.User;
+            if (user == null) return Result.Failure("Unauthorized.");
+            var userIdClaim = user.FindFirst("userId")?.Value ?? user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (!Guid.TryParse(userIdClaim, out var uid)) return Result.Failure("Unauthorized.");
+
+            var appt = await _context.Appointments.FirstOrDefaultAsync(a => a.Id == appointmentId, cancellationToken);
+            if (appt == null) return Result.Failure("Appointment not found.");
+
+            var claimRole = user.FindFirst(ClaimTypes.Role)?.Value;
+            var isManager = claimRole == UserRole.SalonManager.ToString() && await _context.SalonManagers.AnyAsync(sm => sm.Id == uid && sm.SalonId == appt.SalonId, cancellationToken);
+            var isEmployee = claimRole == UserRole.Employee.ToString() && appt.EmployeeId == uid;
+
+            if (!isManager && !isEmployee) return Result.Failure("Not allowed to complete.");
+
+            appt.Complete();
+            _context.Appointments.Update(appt);
+            await _context.SaveChangesAsync(cancellationToken);
+            return Result.Success();
+        }
+
 
         public async Task<Result> ConfirmAppointmentAsync(Guid appointmentId, CancellationToken cancellationToken = default)
         {

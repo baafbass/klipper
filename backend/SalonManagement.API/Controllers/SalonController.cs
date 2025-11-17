@@ -39,15 +39,6 @@ namespace SalonManagement.API.Controllers
             return HandleResult(result);
         }
 
-
-        //[HttpGet("search")]
-        //[AllowAnonymous]
-        //public async Task<IActionResult> SearchByCity([FromQuery] string city)
-        //{
-        //    var result = await _salonService.SearchSalonsByCityAsync(city);
-        //    return HandleResult(result);
-        //}
-
         [HttpPost]
         [Authorize(Roles = "SystemAdmin")]
         public async Task<IActionResult> Create([FromBody] CreateSalonDto dto)
@@ -88,8 +79,6 @@ namespace SalonManagement.API.Controllers
             var result = await _salonService.GetSalonWithDetailsAsync(id);
             return HandleResult(result);
         }
-
-        // In ISalonService add GetSalonDetailsAsync returns SalonDto with Employees populated
 
 
     }
