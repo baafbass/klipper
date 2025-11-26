@@ -3,13 +3,15 @@
     "",
     "\\backend",
     "\\backend\\SalonManagement.API",
-    "\\backend\\SalonManagement.API\\Configurations",
+    "\\backend\\SalonManagement.API\\Domain",
+    "\\backend\\SalonManagement.API\\Domain\\Interfaces",
     "\\backend\\SalonManagement.API\\DTOs",
     "\\backend\\SalonManagement.API\\DTOs\\Auth",
     "\\backend\\SalonManagement.API\\DTOs\\Manager",
     "\\backend\\SalonManagement.API\\Repositories",
-    "\\backend\\SalonManagement.API\\Repositories\\Implementations",
-    "\\backend\\SalonManagement.API\\Repositories\\Interfaces"
+    "\\backend\\SalonManagement.API\\Repositories\\Interfaces",
+    "\\backend\\SalonManagement.API\\Services"
   ],
+  "SelectedNode": "\\backend\\SalonManagement.API\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
