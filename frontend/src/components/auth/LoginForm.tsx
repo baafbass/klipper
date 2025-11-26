@@ -41,7 +41,7 @@ export default function LoginForm(){
             <Scissors className="w-10 h-10 text-slate-900" />
           </div>
           <h2 className="text-3xl font-bold text-white mb-2">Welcome Back</h2>
-          <p className="text-slate-300">Sign in to manage your appointments</p>
+          <p className="text-slate-300">Sign in as Customer</p>
         </div>
 
         <div className="p-8 space-y-6">

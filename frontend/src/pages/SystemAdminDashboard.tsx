@@ -80,7 +80,6 @@ export default function SystemAdminDashboard() {
       const res = await salonApi.create(form);
       const createdSalon: Salon = res.data;
       setSuccess('Salon created successfully.');
-      console.log('created salon',createdSalon);
       // Reset salon form
       setForm({ name: '', description: '', address: '', city: '', phoneNumber: '', email: '' });
 
@@ -163,7 +162,6 @@ export default function SystemAdminDashboard() {
     }
 
     try {
-      console.log('--->',pendingSalonId,managerForm);
       await salonApi.addManager(pendingSalonId, managerForm);
       setManagerSuccess('Salon manager created successfully.');
       // optionally close modal automatically after a short delay
@@ -188,7 +186,7 @@ export default function SystemAdminDashboard() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-white text-gray-800">
       <Header />
       <main className="container mx-auto px-4 py-10 flex-1">
         <div className="grid lg:grid-cols-3 gap-8">
@@ -198,15 +196,15 @@ export default function SystemAdminDashboard() {
             {error && <div className="text-red-600 mb-2">{error}</div>}
             {success && <div className="text-green-600 mb-2">{success}</div>}
 
-            <form onSubmit={handleSubmit}>
-              <input name="name" value={form.name} onChange={handleChange} placeholder="Salon Name" required className="w-full p-2 border mb-2 rounded" />
-              <textarea name="description" value={form.description} onChange={handleChange} placeholder="Description" className="w-full p-2 border mb-2 rounded" />
-              <input name="address" value={form.address} onChange={handleChange} placeholder="Address" className="w-full p-2 border mb-2 rounded" />
-              <input name="city" value={form.city} onChange={handleChange} placeholder="City" className="w-full p-2 border mb-2 rounded" />
-              <input name="phoneNumber" value={form.phoneNumber} onChange={handleChange} placeholder="Phone Number" className="w-full p-2 border mb-2 rounded" />
-              <input name="email" value={form.email} onChange={handleChange} placeholder="Salon Email" className="w-full p-2 border mb-4 rounded" />
+            <form onSubmit={handleSubmit} className='space-y-3'>
+              <input name="name" value={form.name} onChange={handleChange} placeholder="Salon Name" required className="w-full px-3 py-2 border rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200" />
+              <textarea name="description" value={form.description} onChange={handleChange} placeholder="Description" className="w-full px-3 py-2 border rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 h-24 resize-none" />
+              <input name="address" value={form.address} onChange={handleChange} placeholder="Address" className="w-full px-3 py-2 border rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200" />
+              <input name="city" value={form.city} onChange={handleChange} placeholder="City" className="w-full px-3 py-2 border rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200" />
+              <input name="phoneNumber" value={form.phoneNumber} onChange={handleChange} placeholder="Phone Number" className="w-full px-3 py-2 border rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200" />
+              <input name="email" value={form.email} onChange={handleChange} placeholder="Salon Email" className="w-full px-3 py-2 border rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200" />
 
-              <button type="submit" disabled={loading} className="w-full bg-blue-600 text-white py-2 rounded">
+              <button type="submit" disabled={loading} className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-2 rounded-lg shadow hover:shadow-lg transition">
                 {loading ? 'Creating...' : 'Create Salon'}
               </button>
             </form>
@@ -297,7 +295,7 @@ export default function SystemAdminDashboard() {
           <div className="w-full max-w-md bg-white rounded shadow-lg p-6">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-xl font-semibold">Add Salon Manager</h3>
-              <button onClick={skipAddManager} className="text-gray-600">Skip</button>
+              {/*<button onClick={skipAddManager} className="text-gray-600">Skip</button>*/}
             </div>
 
             {managerError && <div className="text-red-600 mb-2">{managerError}</div>}
@@ -312,13 +310,9 @@ export default function SystemAdminDashboard() {
             </div>
 
             <div className="mt-4 flex justify-end gap-2">
-              <button onClick={skipAddManager} className="px-4 py-2 border rounded">Not now</button>
               <button onClick={submitManager} disabled={managerLoading} className="px-4 py-2 bg-blue-600 text-white rounded">
                 {managerLoading ? 'Adding...' : 'Add Manager'}
               </button>
-            </div>
-            <div className="text-xs text-gray-500 mt-3">
-              You can add a salon manager now or skip and add one later from the Add Manager page.
             </div>
           </div>
         </div>

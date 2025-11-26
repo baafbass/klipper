@@ -147,9 +147,9 @@ export default function HomeAppointments() {
   }
 
   return (
-    <div>
+    <div >
       <Header />
-      <main className="container mx-auto p-6">
+      <main className="min-h-screen container mx-auto p-6">
         <div className="grid md:grid-cols-4 gap-6">
           {/* Salons list */}
           <div className="col-span-1 bg-white p-4 rounded shadow">

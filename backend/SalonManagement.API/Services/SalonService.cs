@@ -83,9 +83,6 @@ namespace SalonManagement.API.Services
             return Result.Success(dto);
         }
 
-
-
-
         public async Task<Result<SalonDto>> CreateSalonAsync(CreateSalonDto dto, CancellationToken cancellationToken = default)
         {
             if (dto == null)
